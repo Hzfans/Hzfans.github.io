@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Matlab发送电子邮件email实现程序实时监控 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>Matlab发送电子邮件email实现程序实时监控</h1>
+    </header>
+
+    <section>
+      <p>运行一些比较大的计算程序，经常要运行好几个小时，甚至按天计算。为了能实时监控Matlab的运行情况，可以让电脑在运行完毕Matlab程序以后，给自己发送一个电子邮件（发送短信比较难），手机邮件基本已可以达到实时提醒的效果，流程如下：</p>
+<ul>
+<li>Matlab程序运行…</li>
+<li>运行完毕以后，Matlab调用smtp邮件(163，gmail等)发送邮件</li>
+</ul>
+<p>注：Matlab支持smtp邮件，163，qq邮箱，gmail都可以使用；邮件亦可添加附件，将计算结果等作为附件发送邮件保存。</p>
+<p>这样我就可以实时知道自己的程序运行情况，代码如下：</p>
+<a id="more"></a>
+<h3 id="Matlab发送电子邮件email实现程序实时监控"><a href="#Matlab发送电子邮件email实现程序实时监控" class="headerlink" title="Matlab发送电子邮件email实现程序实时监控"></a>Matlab发送电子邮件email实现程序实时监控</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% MToM('Program Over','**** Program has finished');</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MToM</span><span class="params">()</span></span></span><br><span class="line">subject = <span class="string">'邮件主题'</span>;</span><br><span class="line">content = <span class="string">'邮件内容'</span>;</span><br><span class="line">MailAddress = <span class="string">'邮箱地址@gmail.com'</span>;</span><br><span class="line">password = <span class="string">'邮箱密码'</span>;</span><br><span class="line">DataPath = &#123;[pwd,filesep,<span class="string">'Result.mat'</span>];...</span><br><span class="line">    [pwd,filesep,<span class="string">'XXXX.mat'</span>]&#125;;</span><br><span class="line">    <span class="comment">% pwd当前目录；filesep='\'；附件地址DataPath可以是一组内容；</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'E_mail'</span>,MailAddress);<span class="comment">%</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Server'</span>,<span class="string">'smtp.gmail.com'</span>);</span><br><span class="line"><span class="comment">% STMP服务器地址，不同域名的邮箱地址有不同SMTP服务器地址</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Username'</span>,MailAddress);<span class="comment">%</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Password'</span>,password);</span><br><span class="line">props = java.lang.System.getProperties;<span class="comment">%</span></span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.auth'</span>,<span class="string">'true'</span>);<span class="comment">%</span></span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.socketFactory.class'</span>, <span class="string">'javax.net.ssl.SSLSocketFactory'</span>);</span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.socketFactory.port'</span>,<span class="string">'465'</span>);</span><br><span class="line">sendmail(MailAddress,subject,content,DataPath);<span class="comment">%</span></span><br></pre></td></tr></table></figure>
+<h3 id="Matlab代码保护"><a href="#Matlab代码保护" class="headerlink" title="Matlab代码保护"></a>Matlab代码保护</h3><p>有时候程序在公共服务器上运行，邮箱密码若以明码方式写在程序中不太合适。<br>Matlab自带代码保护功能，在命令行窗口运行以下代码，便可生成“同名.p”文件，不可查询。<br>此时，再删除原MToM.m文件，程序正常运行，起到保护作用。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcode MToM</span><br></pre></td></tr></table></figure>
+<h3 id="Matlab计算结果另存"><a href="#Matlab计算结果另存" class="headerlink" title="Matlab计算结果另存"></a>Matlab计算结果另存</h3><p>CToF()–在上主程序上一级文件夹，新建文件夹Results，保存所有计算结果，已防止辛苦计算的结果不小心被覆盖。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[status, msg, msgID]</span> = <span class="title">CToF</span><span class="params">()</span></span></span><br><span class="line">destination = <span class="string">'..\Results'</span>;</span><br><span class="line">source = [pwd,filesep,<span class="string">'*.mat'</span>];</span><br><span class="line">[status, msg, msgID] = copyfile(source, destination);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h3 id="Matlab主程序调用"><a href="#Matlab主程序调用" class="headerlink" title="Matlab主程序调用"></a>Matlab主程序调用</h3><p>主程序添加以下代码，调用“MToM()”，“CToF()”。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%------------------</span></span><br><span class="line">MToM();</span><br><span class="line">status = CToF();</span><br><span class="line"><span class="comment">%------------------</span></span><br></pre></td></tr></table></figure>
+<h4 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前路径下 （mat和m文件在一起）：  load  ***.mat; </span><br><span class="line">在下一级路径下：  load  .\下一级路径的文件名\***.mat; </span><br><span class="line">在上一级路径下：  load  ..\***.mat; </span><br><span class="line">在平行文件夹内:   load  ..\平行的文件夹\***.mat;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://www.ilovematlab.cn/thread-56627-1-1.html" target="_blank" rel="noopener">http://www.ilovematlab.cn/thread-56627-1-1.html</a><br><a href="https://blog.csdn.net/ouening/article/details/52079747" target="_blank" rel="noopener">https://blog.csdn.net/ouening/article/details/52079747</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-09T14:00:00.000Z" itemprop="datePublished">
+              2018-06-09
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Matlab/">Matlab</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/电子邮件/">电子邮件</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

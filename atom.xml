@@ -42,6 +42,36 @@
   </entry>
   
   <entry>
+    <title>Matlab发送电子邮件email实现程序实时监控</title>
+    <link href="https://Hzfans.github.io/2018/06/09/2018-6-9%20%E4%BD%BF%E7%94%A8Matlab%E5%8F%91%E9%80%81smtp%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6email%E5%AE%9E%E7%8E%B0%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7/"/>
+    <id>https://Hzfans.github.io/2018/06/09/2018-6-9 使用Matlab发送smtp电子邮件email实现程序实时监控/</id>
+    <published>2018-06-09T14:00:00.000Z</published>
+    <updated>2018-06-09T23:32:17.177Z</updated>
+    
+    <content type="html"><![CDATA[<p>运行一些比较大的计算程序，经常要运行好几个小时，甚至按天计算。为了能实时监控Matlab的运行情况，可以让电脑在运行完毕Matlab程序以后，给自己发送一个电子邮件（发送短信比较难），手机邮件基本已可以达到实时提醒的效果，流程如下：</p><ul><li>Matlab程序运行…</li><li>运行完毕以后，Matlab调用smtp邮件(163，gmail等)发送邮件</li></ul><p>注：Matlab支持smtp邮件，163，qq邮箱，gmail都可以使用；邮件亦可添加附件，将计算结果等作为附件发送邮件保存。</p><p>这样我就可以实时知道自己的程序运行情况，代码如下：</p><a id="more"></a><h3 id="Matlab发送电子邮件email实现程序实时监控"><a href="#Matlab发送电子邮件email实现程序实时监控" class="headerlink" title="Matlab发送电子邮件email实现程序实时监控"></a>Matlab发送电子邮件email实现程序实时监控</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% MToM('Program Over','**** Program has finished');</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MToM</span><span class="params">()</span></span></span><br><span class="line">subject = <span class="string">'邮件主题'</span>;</span><br><span class="line">content = <span class="string">'邮件内容'</span>;</span><br><span class="line">MailAddress = <span class="string">'邮箱地址@gmail.com'</span>;</span><br><span class="line">password = <span class="string">'邮箱密码'</span>;</span><br><span class="line">DataPath = &#123;[pwd,filesep,<span class="string">'Result.mat'</span>];...</span><br><span class="line">    [pwd,filesep,<span class="string">'XXXX.mat'</span>]&#125;;</span><br><span class="line">    <span class="comment">% pwd当前目录；filesep='\'；附件地址DataPath可以是一组内容；</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'E_mail'</span>,MailAddress);<span class="comment">%</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Server'</span>,<span class="string">'smtp.gmail.com'</span>);</span><br><span class="line"><span class="comment">% STMP服务器地址，不同域名的邮箱地址有不同SMTP服务器地址</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Username'</span>,MailAddress);<span class="comment">%</span></span><br><span class="line">setpref(<span class="string">'Internet'</span>,<span class="string">'SMTP_Password'</span>,password);</span><br><span class="line">props = java.lang.System.getProperties;<span class="comment">%</span></span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.auth'</span>,<span class="string">'true'</span>);<span class="comment">%</span></span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.socketFactory.class'</span>, <span class="string">'javax.net.ssl.SSLSocketFactory'</span>);</span><br><span class="line">props.setProperty(<span class="string">'mail.smtp.socketFactory.port'</span>,<span class="string">'465'</span>);</span><br><span class="line">sendmail(MailAddress,subject,content,DataPath);<span class="comment">%</span></span><br></pre></td></tr></table></figure><h3 id="Matlab代码保护"><a href="#Matlab代码保护" class="headerlink" title="Matlab代码保护"></a>Matlab代码保护</h3><p>有时候程序在公共服务器上运行，邮箱密码若以明码方式写在程序中不太合适。<br>Matlab自带代码保护功能，在命令行窗口运行以下代码，便可生成“同名.p”文件，不可查询。<br>此时，再删除原MToM.m文件，程序正常运行，起到保护作用。</p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcode MToM</span><br></pre></td></tr></table></figure><h3 id="Matlab计算结果另存"><a href="#Matlab计算结果另存" class="headerlink" title="Matlab计算结果另存"></a>Matlab计算结果另存</h3><p>CToF()–在上主程序上一级文件夹，新建文件夹Results，保存所有计算结果，已防止辛苦计算的结果不小心被覆盖。</p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[status, msg, msgID]</span> = <span class="title">CToF</span><span class="params">()</span></span></span><br><span class="line">destination = <span class="string">'..\Results'</span>;</span><br><span class="line">source = [pwd,filesep,<span class="string">'*.mat'</span>];</span><br><span class="line">[status, msg, msgID] = copyfile(source, destination);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure><h3 id="Matlab主程序调用"><a href="#Matlab主程序调用" class="headerlink" title="Matlab主程序调用"></a>Matlab主程序调用</h3><p>主程序添加以下代码，调用“MToM()”，“CToF()”。</p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%------------------</span></span><br><span class="line">MToM();</span><br><span class="line">status = CToF();</span><br><span class="line"><span class="comment">%------------------</span></span><br></pre></td></tr></table></figure><h4 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前路径下 （mat和m文件在一起）：  load  ***.mat; </span><br><span class="line">在下一级路径下：  load  .\下一级路径的文件名\***.mat; </span><br><span class="line">在上一级路径下：  load  ..\***.mat; </span><br><span class="line">在平行文件夹内:   load  ..\平行的文件夹\***.mat;</span><br></pre></td></tr></table></figure><blockquote><p><a href="http://www.ilovematlab.cn/thread-56627-1-1.html" target="_blank" rel="noopener">http://www.ilovematlab.cn/thread-56627-1-1.html</a><br><a href="https://blog.csdn.net/ouening/article/details/52079747" target="_blank" rel="noopener">https://blog.csdn.net/ouening/article/details/52079747</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;运行一些比较大的计算程序，经常要运行好几个小时，甚至按天计算。为了能实时监控Matlab的运行情况，可以让电脑在运行完毕Matlab程序以后，给自己发送一个电子邮件（发送短信比较难），手机邮件基本已可以达到实时提醒的效果，流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matlab程序运行…&lt;/li&gt;
+&lt;li&gt;运行完毕以后，Matlab调用smtp邮件(163，gmail等)发送邮件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：Matlab支持smtp邮件，163，qq邮箱，gmail都可以使用；邮件亦可添加附件，将计算结果等作为附件发送邮件保存。&lt;/p&gt;
+&lt;p&gt;这样我就可以实时知道自己的程序运行情况，代码如下：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Matlab" scheme="https://Hzfans.github.io/categories/Matlab/"/>
+    
+    
+      <category term="Matlab" scheme="https://Hzfans.github.io/tags/Matlab/"/>
+    
+      <category term="电子邮件" scheme="https://Hzfans.github.io/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>excel逆序粘贴 index公式</title>
     <link href="https://Hzfans.github.io/2018/05/04/2018-5-4%20excel%20%E9%80%86%E5%BA%8F%E7%B2%98%E8%B4%B4%20index%E5%85%AC%E5%BC%8F/"/>
     <id>https://Hzfans.github.io/2018/05/04/2018-5-4 excel 逆序粘贴 index公式/</id>
@@ -238,32 +268,6 @@
       <category term="Mining" scheme="https://Hzfans.github.io/tags/Mining/"/>
     
       <category term="Glossary" scheme="https://Hzfans.github.io/tags/Glossary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>软件推荐(占位)</title>
-    <link href="https://Hzfans.github.io/2018/03/16/2018-3-16%20%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90(%E5%8D%A0%E4%BD%8D)/"/>
-    <id>https://Hzfans.github.io/2018/03/16/2018-3-16 软件推荐(占位)/</id>
-    <published>2018-03-16T14:00:00.000Z</published>
-    <updated>2018-03-17T03:00:25.238Z</updated>
-    
-    <content type="html"><![CDATA[<p>一些不常用但有时候又紧缺的一些小软件记录，某些付费软件附有旧版本crack版，链接失效可联系索要更新。</p><h2 id="FastStone-Capture-长截图工具"><a href="#FastStone-Capture-长截图工具" class="headerlink" title="FastStone Capture 长截图工具"></a>FastStone Capture 长截图工具</h2><p>一款功能强大，重量轻但功能全面的屏幕捕捉和屏幕录制工具。<br>FastStone Capture is a powerful, lightweight, yet full-featured screen capture tool and screen video recorder. It allows you to easily capture and annotate anything on the screen including windows, objects, menus, full screen, rectangular / freehand / fixed regions as well as scrolling windows / web pages. It also allows you to record all screen activities including onscreen changes, speech from microphone, mouse movements and clicks into highly compressed video files. You can choose to send captures to editor, file, clipboard, printer, email, Word / PowerPoint document or upload them to your website. Editing tools include annotating (texts, arrowed lines, highlights), resizing, cropping, sharpening, watermarking, applying edge effects and many more. Other features include image scanning, global hotkeys, automatic filename generation, support for external editors, a color picker, a screen magnifier, a screen crosshair and a screen ruler. </p><p>FastStone Capture saves images in BMP, GIF, JPEG, PCX, PNG, TGA, TIFF and PDF formats. Built-in screen recorder saves videos in WMV (Windows Media Video) format.</p><p>官网：<a href="http://www.faststone.org/FSCaptureDetail.htm" target="_blank" rel="noopener">http://www.faststone.org/FSCaptureDetail.htm</a><br>链接：<a href="https://pan.baidu.com/s/1Ido_gZYxGe5Euup1VWZF3w" target="_blank" rel="noopener">https://pan.baidu.com/s/1Ido_gZYxGe5Euup1VWZF3w</a> 密码：iha0</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一些不常用但有时候又紧缺的一些小软件记录，某些付费软件附有旧版本crack版，链接失效可联系索要更新。&lt;/p&gt;
-&lt;h2 id=&quot;FastStone-Capture-长截图工具&quot;&gt;&lt;a href=&quot;#FastStone-Capture-长截图工具&quot; class=&quot;header
-      
-    
-    </summary>
-    
-      <category term="OS" scheme="https://Hzfans.github.io/categories/OS/"/>
-    
-    
-      <category term="software" scheme="https://Hzfans.github.io/tags/software/"/>
     
   </entry>
   
