@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <section class="search">
+	<form class="site-search-form">
+		<input type="text" id="local-search-input" class="st-search-input" />
+	</form>
+	<div id="local-search-result" class="local-search-result-cls"></div>
+	<script type="text/javascript" id="local.search.active">
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	</script>
+</section>
+<ul class="Index">
+  
+    <header class='PageTitle'>
+        <h1>{ matlab }</h1>
+    </header>
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/04/11/2018-4-11 Matlab基本绘图-坐标轴/">Matlab基本绘图-坐标轴</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-04-11T14:00:00.000Z" itemprop="datePublished">
+    2018-04-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/plot/">plot</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/Matlab/">Matlab</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>使用matlab的绘图函数绘图时系统默认设置了一些属性，例如坐标轴字号大小等并根据情况自动设置坐标轴显示的上下限，这些属性可以通过函数灵活改动。</p>
+<h3 id="坐标轴的设置"><a href="#坐标轴的设置" class="headerlink" title="坐标轴的设置"></a>坐标轴的设置</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 绘图</span></span><br><span class="line">figure;</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴线宽,加边框,坐标字号</span></span><br><span class="line">axes(<span class="string">'linewidth'</span>,<span class="number">1</span>, <span class="string">'box'</span>, <span class="string">'on'</span>, <span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴label</span></span><br><span class="line">xlabel(<span class="string">'时间(s)'</span>,<span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line">ylabel(<span class="string">'压力(pa)'</span>,<span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line">grid on;</span><br><span class="line">hold on;</span><br><span class="line">plot(X, Y, <span class="string">'k'</span>, <span class="string">'linewidth'</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴上下限</span></span><br><span class="line">xlim([<span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line">ylim([<span class="number">0</span>, <span class="number">100</span>]);</span><br><span class="line"></span><br><span class="line">MATLAB 操纵坐标轴</span><br><span class="line">axis off;        <span class="comment">% 去掉坐标轴</span></span><br><span class="line">axis tight;                     <span class="comment">% 紧坐标轴</span></span><br><span class="line">axis equal;                     <span class="comment">% 等比坐标轴</span></span><br><span class="line">axis([<span class="number">-0.1</span>, <span class="number">8.1</span>, <span class="number">-1.1</span>, <span class="number">1.1</span>]);   <span class="comment">% 坐标轴的显示范围</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% gca: gca, h=figure(...);</span></span><br><span class="line">set(gca, <span class="string">'XLim'</span>,[<span class="number">3</span> <span class="number">40</span>]);                   <span class="comment">% X轴的数据显示范围</span></span><br><span class="line">set(gca, <span class="string">'XTick'</span>,[<span class="number">-3.14</span>,<span class="number">0</span>,<span class="number">3.14</span>] );         <span class="comment">% X轴的记号点</span></span><br><span class="line">set(gca, <span class="string">'XTicklabel'</span>,&#123;<span class="string">'-pi'</span>,<span class="string">'0'</span>,<span class="string">'pi'</span>&#125;);   <span class="comment">% X轴的记号</span></span><br><span class="line">set(gca, <span class="string">'XTick'</span>, []);                     <span class="comment">% 清除X轴的记号点</span></span><br><span class="line">set(gca, <span class="string">'XGrid'</span>,<span class="string">'on'</span>);                    <span class="comment">% X轴的网格</span></span><br><span class="line">set(gca, <span class="string">'XDir'</span>,<span class="string">'reverse'</span>);                <span class="comment">% 逆转X轴</span></span><br><span class="line">set(gca, <span class="string">'XColor'</span>,<span class="string">'red'</span>);                  <span class="comment">% X轴的颜色</span></span><br></pre></td></tr></table></figure>
+        
+          <div class="more-link">
+            <a href="/2018/04/11/2018-4-11 Matlab基本绘图-坐标轴/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/16/2018-2-16 matlab数据的导入导出-总结篇/">matlab数据的导入导出-总结篇</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-02-16T15:00:00.000Z" itemprop="datePublished">
+    2018-02-16
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/Matlab/">Matlab</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="支持的导入和导出文件格式"><a href="#支持的导入和导出文件格式" class="headerlink" title="支持的导入和导出文件格式"></a>支持的导入和导出文件格式</h2><p>下表显示了可以从 MATLAB 应用程序导入和导出的文件格式。</p>
+<div class="table-responsive"><table class="table table-condensed" width="100%"><br><colgroup><col class="tcol1" width="22%"><col class="tcol2" width="16%"><col class="tcol3" width="27%"><col class="tcol4" width="18%"><col class="tcol5" width="18%"></colgroup><thead><tr><th><p>文件内容</p></th><th><p>扩展名</p></th><th><p>说明</p></th><th><p>导入函数</p></th><th><p>导出函数</p></th></tr></thead><tbody><tr><td rowspan="2">MATLAB 格式化数据</td><td rowspan="2"><p>MAT</p></td><td><p>保存的 MATLAB 工作区</p></td><td><p id="bt3h_1o-1" class="cellmonospace"><a href="../ref/load.html"><code class="function">load</code></a></p></td><td><p id="bt3h_1r-1" class="cellmonospace"><a href="../ref/save.html"><code class="function">save</code></a></p></td></tr><tr><td><p>访问 MATLAB 工作区中的部分变量</p></td><td><a href="../ref/matfile.html"><code class="function">matfile</code></a></td><td><a href="../ref/matfile.html"><code class="function">matfile</code></a></td></tr><tr><td rowspan="4"><p>文本</p></td><td rowspan="4"><p>任意文本，包括：<br><br>CSV<br><br>TXT</p></td><td><p>逗号分隔的数字</p></td><td><p id="bt3h_2s-1" class="cellmonospace"><a href="../ref/csvread.html"><code class="function">csvread</code></a></p></td><td><p id="bt3h_2v-1" class="cellmonospace"><a href="../ref/csvwrite.html"><code class="function">csvwrite</code></a> </p></td></tr><tr><td><p>分隔数字</p></td><td><p id="bt3h_28-1" class="cellmonospace"><a href="../ref/dlmread.html"><code class="function">dlmread</code></a></p></td><td><p id="bt3h_3d-1" class="cellmonospace"><a href="../ref/dlmwrite.html"><code class="function">dlmwrite</code></a></p></td></tr><tr><td><p>分隔数字或者文本和数字混合</p></td><td><p id="bt3h_3v-1" class="cellmonospace"><a href="../ref/textscan.html"><code class="function">textscan</code></a></p></td><td>无</td></tr><tr><td><p>列向分隔数字或者文本和数字混合</p></td><td><p><a href="../ref/readtable.html"><code class="function">readtable</code></a></p></td><td><p><a href="../ref/writetable.html"><code class="function">writetable</code></a></p></td></tr><tr><td rowspan="2"><p>电子表格</p></td><td rowspan="2"><p>XLS<br><br>XLSX<br><br>XLSM</p><p>XLSB（仅限安装了 Windows<sup>®</sup> 版 <span>Microsoft<sup>®</sup> Excel<sup>®</sup></span> 的系统）</p><p>XLTM（仅导入）<br><br>XLTX（仅导入）</p><p>ODS（具有 COM 接口的系统）</p></td><td><p>工作表或电子表格范围</p></td><td><p><a href="../ref/xlsread.html"><code class="function">xlsread</code></a></p></td><td><p><a href="../ref/xlswrite.html"><code class="function">xlswrite</code></a></p></td></tr><tr><td><p>工作表或电子表格范围中的列向数据</p></td><td><p><a href="../ref/readtable.html"><code class="function">readtable</code></a></p></td><td><p><a href="../ref/writetable.html"><code class="function">writetable</code></a></p></td></tr><tr><td>可扩展标记语言</td><td><p>XML</p></td><td><p>XML 格式化文本</p></td><td><p id="bt3h_5v-1" class="cellmonospace"><a href="../ref/xmlread.html"><code class="function">xmlread</code></a></p></td><td><p id="bt3h_5v-2" class="cellmonospace"><a href="../ref/xmlwrite.html"><code class="function">xmlwrite</code></a></p></td></tr></tbody></table><br></div>
+        
+          <div class="more-link">
+            <a href="/2018/02/16/2018-2-16 matlab数据的导入导出-总结篇/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/05/2018-2-5 Matlab基本绘图/">Matlab 基本绘图</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-02-05T15:00:00.000Z" itemprop="datePublished">
+    2018-02-05
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/plot/">plot</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/Matlab/">Matlab</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="matlab基本绘图指令"><a href="#matlab基本绘图指令" class="headerlink" title="matlab基本绘图指令"></a>matlab基本绘图指令</h2><h3 id="plot-函数的基本使用语法格式为"><a href="#plot-函数的基本使用语法格式为" class="headerlink" title="plot 函数的基本使用语法格式为:"></a>plot 函数的基本使用语法格式为:</h3><p>绘制一条曲线：plot(xdata, ydata, ’color_linestyle_marker’)<br>绘制多条曲线：plot(xdata1, ydata1, ’clm1’, xdata2, ydata2, ’clm2’, …)<br>若在绘制曲线的时候没有指定曲线的色彩、线型和标识符，则MATLAB 使用默认的设置。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = <span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">1000</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">&gt;&gt; y = <span class="built_in">sin</span>(<span class="number">2</span>*x+<span class="built_in">pi</span>/<span class="number">4</span>);</span><br><span class="line">&gt;&gt; plot(x,y)</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置曲线的样式属性"><a href="#设置曲线的样式属性" class="headerlink" title="设置曲线的样式属性"></a>设置曲线的样式属性</h3><p>MATLAB 预先设置了不同的曲线样式属性值，分别控制曲线的色彩、线型和标识符。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">线型</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">标记符</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">颜色</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">示例(md怎么把格子拉长一点呢)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">实线(默认)</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加号符</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">红色 </td><td bgcolor="red"></td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">双划线</td>
+<td style="text-align:center">o</td>
+<td style="text-align:center">空心圆</td>
+<td style="text-align:center">g</td>
+<td style="text-align:center">绿色 </td><td bgcolor="green"></td>
+</tr>
+<tr>
+<td style="text-align:center">:</td>
+<td style="text-align:center">虚线</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">星号</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">蓝色 </td><td bgcolor="blue"></td>
+</tr>
+<tr>
+<td style="text-align:center">-.</td>
+<td style="text-align:center">点画线</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">实心圆</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">青绿色 </td><td bgcolor="Cyan"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">叉号符</td>
+<td style="text-align:center">m</td>
+<td style="text-align:center">洋红色 </td><td bgcolor="Magenta"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">正方形</td>
+<td style="text-align:center">y</td>
+<td style="text-align:center">黄色 </td><td bgcolor="yellow"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">菱形</td>
+<td style="text-align:center">k</td>
+<td style="text-align:center">黑色 </td><td bgcolor="black"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">上三角形</td>
+<td style="text-align:center">w</td>
+<td style="text-align:center">白色 </td><td bgcolor="white"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">v</td>
+<td style="text-align:center">下三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">左三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">右三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">五角星</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">h</td>
+<td style="text-align:center">六边形</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+        
+          <div class="more-link">
+            <a href="/2018/02/05/2018-2-5 Matlab基本绘图/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

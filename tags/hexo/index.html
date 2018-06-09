@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <section class="search">
+	<form class="site-search-form">
+		<input type="text" id="local-search-input" class="st-search-input" />
+	</form>
+	<div id="local-search-result" class="local-search-result-cls"></div>
+	<script type="text/javascript" id="local.search.active">
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	</script>
+</section>
+<ul class="Index">
+  
+    <header class='PageTitle'>
+        <h1>{ hexo }</h1>
+    </header>
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/01/03/2018-1-3 为Hexo blog博客创建本地搜索引擎/">为Hexo blog博客创建本地搜索引擎</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-01-03T13:00:00.000Z" itemprop="datePublished">
+    2018-01-03
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/github/">github</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/hexo/">hexo</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/blog/">blog</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/github/">github</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>刚开始使用github+hexo建立blog博客。参考了不少文章，发现大部分作者采用的主题为iissan 创建的 NexT。NexT 主题默认提供了两个站内搜索解决方案：swiftype 和 tinysou，所以大都比较好配置。<br>对于不想使用NexT主题，然而喜欢的主题又没有提供站内搜索方案的时候，可能就比较折腾了。有人不想使用swiftype 和 tinysou方法也可能是基于某些其他原因：</p>
+<ul>
+<li>不愿意受限于第三方服务：第三方服务随时可能完蛋，风险大受限多。原本建独立博客目的就是为了不受限，如此这般， swiftype 就是如此原因；</li>
+<li>第三方服务样式单一；</li>
+<li>第三方服务，需要应用第三方JS，存在安全问题；<br>后经过大量搜索查询，发现目前Hexo已经有比较满意的解决方法了。</li>
+</ul>
+<h1 id="1-基本思路"><a href="#1-基本思路" class="headerlink" title="1. 基本思路"></a>1. 基本思路</h1><ul>
+<li>Step1： 生成索引文件；</li>
+<li>Step2： 有效的算法：根据用户输入的检索词，返回包含检索词的文章列表；</li>
+<li>Step3 ：使用 JavaScript 和 jQuery 来实现在浏览器中执行算法；</li>
+<li>Step4 ：在页面的合适位置展示搜索框和输出结果；</li>
+<li>Step5 ：美化。</li>
+</ul>
+        
+          <div class="more-link">
+            <a href="/2018/01/03/2018-1-3 为Hexo blog博客创建本地搜索引擎/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

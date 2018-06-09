@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>git删除所有Commits提交历史记录，变为全新仓库 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>git删除所有Commits提交历史记录，变为全新仓库</h1>
+    </header>
+
+    <section>
+      <p><strong>个人感觉一般两个情况下，会想有这个需要：</strong></p>
+<ul>
+<li><p>一个是：需要把旧项目提交到Git上，但是原来的某版历史记录中可能会有项目密码等敏感信息。这时候需要删除这些历史记录，形成一个全新的仓库，并且希望保持代码不变。</p>
+</li>
+<li><p>另一个是：处女座！隔三差五看到过往的Commits心烦，没有原因。</p>
+</li>
+</ul>
+<p><strong>1. Checkout</strong></p>
+<p>新建一个branch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --orphan latest_branch</span><br></pre></td></tr></table></figure>
+<p><strong>2. Add all the files</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
+<p><strong>3. Commit the changes</strong></p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am &quot;commit message&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>4. Delete the branch</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D master</span><br></pre></td></tr></table></figure>
+<p><strong>5. Rename the current branch to master</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m master</span><br></pre></td></tr></table></figure>
+<p><strong>6. 连接远程库</strong></p>
+<p>把下面的Hzfans替换成你自己的GitHub账户名，Hzfans.github.io替换为你自己的项目名称。<br>连接后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。这一步非必要，如果你之前已经连接了的话，以防万一。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:Hzfans/Hzfans.github.io.git</span><br></pre></td></tr></table></figure>
+<p><strong>7. Finally, force update your repository</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://yuhongjun.github.io/tech/2017/04/28/git%E4%BB%93%E5%BA%93%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95-%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%B9%B2%E5%87%80%E7%9A%84%E6%96%B0%E4%BB%93%E5%BA%93.html" target="_blank" rel="noopener">YUHONGJUN.GITHUB.IO</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-01-02T13:00:00.000Z" itemprop="datePublished">
+              2018-01-02
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/git/">git</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

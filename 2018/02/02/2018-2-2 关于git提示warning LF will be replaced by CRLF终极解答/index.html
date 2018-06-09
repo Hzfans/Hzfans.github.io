@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关于git提示&#34;warning LF will be replaced by CRLF&#34;终极解答 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>关于git提示&#34;warning LF will be replaced by CRLF&#34;终极解答</h1>
+    </header>
+
+    <section>
+      <h3 id="一、发现问题"><a href="#一、发现问题" class="headerlink" title="一、发现问题"></a>一、发现问题</h3><p>windows平台下使用git add，git deploy 文件时经常出现“warning: LF will be replaced by CRLF” 的提示。</p>
+<h5 id="网上很多解决办法提到："><a href="#网上很多解决办法提到：" class="headerlink" title="网上很多解决办法提到："></a>网上很多解决办法提到：</h5><p>设置core.autocrlf=false，windows也用LF换行。<br>除了记事本，其他编辑器都可以正常编辑。<br><strong>而没有给出具体原因和分析，现在加以补充。</strong></p>
+<h3 id="二、分析问题"><a href="#二、分析问题" class="headerlink" title="二、分析问题"></a>二、分析问题</h3><p>格式化与多余的空白字符，特别是在跨平台情况下，有时候是一个令人发指的问题。由于编辑器的不同或者文件行尾的换行符在 Windows 下被替换了，一些细微的空格变化会不经意地混入提交，造成麻烦。虽然这是小问题，但它会极大地扰乱跨平台协作。<br>其实，这是因为在文本处理中，<a href="http://en.wikipedia.org/wiki/Carriage_return" target="_blank" rel="noopener">CR</a>（<strong>C</strong>arriage<strong>R</strong>eturn），<a href="http://en.wikipedia.org/wiki/Line_feed" target="_blank" rel="noopener">LF</a>（<strong>L</strong>ine<strong>F</strong>eed），CR/LF是不同操作系统上使用的换行符，具体如下：</p>
+<h5 id="换行符‘-n’和回车符‘-r’"><a href="#换行符‘-n’和回车符‘-r’" class="headerlink" title="换行符‘\n’和回车符‘\r’"></a>换行符‘\n’和回车符‘\r’</h5><ul>
+<li>回车符就是回到一行的开头，用符号r表示，十进制ASCII代码是13，十六进制代码为0x0D，回车（return）；</li>
+<li>换行符就是另起一行，用n符号表示，ASCII代码是10，十六制为0x0A， 换行（newline）。</li>
+</ul>
+<p>所以我们平时编写文件的回车符应该确切来说叫做回车换行符。</p>
+<a id="more"></a>
+<h5 id="应用情况"><a href="#应用情况" class="headerlink" title="应用情况"></a>应用情况</h5><ul>
+<li>Dos和Windows平台： 使用回车（CR）和换行（LF）两个字符来结束一行，回车+换行(CR+LF)，即“\r\n”；</li>
+<li>Mac 和 Linux平台：只使用换行（LF）一个字符来结束一行，即“\n”；</li>
+<li>最早Mac每行结尾是回车CR 即’\r’，后mac os x 也投奔了 unix。</li>
+</ul>
+<p>许多 Windows 上的编辑器会悄悄把行尾的换行（LF）字符转换成回车（CR）和换行（LF），或在用户按下 Enter 键时，插入回车（CR）和换行（LF）两个字符。</p>
+<h5 id="影响："><a href="#影响：" class="headerlink" title="影响："></a>影响：</h5><ul>
+<li>一个直接后果是，Unix/Mac系统下的文件在Windows里打开的话，所有文字会变成一行；</li>
+<li>而Windows里的文件在Unix/Mac下打开的话，在每行的结尾可能会多出一个^M符号。</li>
+<li>Linux保存的文件在windows上用记事本看的话会出现黑点。</li>
+</ul>
+<p>这些问题都可以通过一定方式进行转换统一，例如，在linux下，命令unix2dos 是把linux文件格式转换成windows文件格式，命令dos2unix 是把windows格式转换成linux文件格式。</p>
+<h3 id="三、解决问题："><a href="#三、解决问题：" class="headerlink" title="三、解决问题："></a>三、解决问题：</h3><h4 id="情况一："><a href="#情况一：" class="headerlink" title="情况一："></a>情况一：</h4><p>Git 可以在你提交时自动地把回车（CR）和换行（LF）转换成换行（LF），而在检出代码时把换行（LF）转换成回车（CR）和换行（LF）。 你可以用<code>git config --global core.autocrlf true</code> 来打开此项功能。 如果是在 Windows 系统上，把它设置成 true，这样在检出代码时，换行会被转换成回车和换行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#提交时转换为LF，检出时转换为CRLF</span><br><span class="line">$ git config --global core.autocrlf true</span><br></pre></td></tr></table></figure></p>
+<h4 id="情况二："><a href="#情况二：" class="headerlink" title="情况二："></a>情况二：</h4><p>如果使用以换行（LF）作为行结束符的 Linux 或 Mac，你不需要 Git 在检出文件时进行自动的转换。然而当一个以回车（CR）和换行（LF）作为行结束符的文件不小心被引入时，你肯定想让 Git 修正。 所以，你可以把 core.autocrlf 设置成 input 来告诉 Git 在提交时把回车和换行转换成换行，检出时不转换：（这样在 Windows 上的检出文件中会保留回车和换行，而在 Mac 和 Linux 上，以及版本库中会保留换行。）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#提交时转换为LF，检出时不转换</span><br><span class="line">$ git config --global core.autocrlf input</span><br></pre></td></tr></table></figure></p>
+<h4 id="情况三："><a href="#情况三：" class="headerlink" title="情况三："></a>情况三：</h4><p>如果你是 Windows 程序员，且正在开发仅运行在 Windows 上的项目，可以设置 false 取消此功能，把回车保留在版本库中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#提交检出均不转换</span><br><span class="line">$ git config --global core.autocrlf false</span><br></pre></td></tr></table></figure></p>
+<h4 id="你也可以在文件提交时进行safecrlf检查"><a href="#你也可以在文件提交时进行safecrlf检查" class="headerlink" title="你也可以在文件提交时进行safecrlf检查"></a>你也可以在文件提交时进行safecrlf检查</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#拒绝提交包含混合换行符的文件</span><br><span class="line">git config --global core.safecrlf true   </span><br><span class="line"></span><br><span class="line">#允许提交包含混合换行符的文件</span><br><span class="line">git config --global core.safecrlf false   </span><br><span class="line"></span><br><span class="line">#提交包含混合换行符的文件时给出警告</span><br><span class="line">git config --global core.safecrlf warn</span><br></pre></td></tr></table></figure>
+<h4 id="通俗解释"><a href="#通俗解释" class="headerlink" title="通俗解释"></a>通俗解释</h4><hr>
+<ul>
+<li>git 的 Windows 客户端基本都会默认设置 core.autocrlf=true，设置core.autocrlf=true, 只要保持工作区都是纯 CRLF 文件，编辑器用 CRLF 换行，就不会出现警告了；</li>
+<li>Linux 最好不要设置 core.autocrlf，因为这个配置算是为 Windows 平台定制；</li>
+<li>Windows 上设置 core.autocrlf=false，仓库里也没有配置 .gitattributes，很容易引入 CRLF 或者混合换行符（Mixed Line Endings，一个文件里既有 LF 又有CRLF）到版本库，这样就可能产生各种奇怪的问题。</li>
+</ul>
+<hr>
+<p><a href="http://blog.csdn.net/kxjrzyk/article/details/54944952" target="_blank" rel="noopener">http://blog.csdn.net/kxjrzyk/article/details/54944952</a><br><a href="http://blog.csdn.net/tskyfree/article/details/8121951" target="_blank" rel="noopener">http://blog.csdn.net/tskyfree/article/details/8121951</a><br><a href="https://www.zhihu.com/question/46542168" target="_blank" rel="noopener">https://www.zhihu.com/question/46542168</a><br><a href="https://www.zhihu.com/question/50862500/answer/123197258" target="_blank" rel="noopener">https://www.zhihu.com/question/50862500/answer/123197258</a><br><a href="http://www.cnblogs.com/flying_bat/p/3324769.html" target="_blank" rel="noopener">http://www.cnblogs.com/flying_bat/p/3324769.html</a></p>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-02-02T15:00:00.000Z" itemprop="datePublished">
+              2018-02-02
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/git/">git</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/CRLF/">CRLF</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Win7x32x64安装OleDB驱动解决上传excel报错office未注册问题 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>Win7x32x64安装OleDB驱动解决上传excel报错office未注册问题</h1>
+    </header>
+
+    <section>
+      <h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>Office 2007、2010的Ace引擎都是Microsoft.ACE.OLEDB.12.0，C/S程序上传excel功能，有时候会报错office未注册的提示。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>去官网下载Microsoft Access 2010 数据库引擎可再发行程序包AccessDatabaseEngine_X64.exe。</p>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-74f06262e9e70038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<p>由于是Office2007x32系统，需要对x64的安装包进行修正。</p>
+<h4 id="具体办法如下："><a href="#具体办法如下：" class="headerlink" title="具体办法如下："></a>具体办法如下：</h4><a id="more"></a>
+<ul>
+<li>先用WinRar把AccessDatabaseEngine_X64.exe解压缩，里面会有一个AceRedist.msi安装文件，然后用Orca打开。<strong>（如何安装Orca见最后）</strong></li>
+</ul>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-755e997956bb44b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-7cedfcbeacffcf5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-fbed27f565a54877.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<ul>
+<li>打开这个MSI，找到LaunchCondition里面的BLOCKINSTALLATION，删掉，保存。现在运行AceRedist.msi。</li>
+</ul>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-11e198a3852fc343.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-685d29e27d7d9a69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<ul>
+<li>一路默认安装，结束。</li>
+<li>我们就能看见Microsoft.ACE.OLEDB.12.0的数据驱动了。用它就可以解决Ms Access、Ms Excel各版本的连接了。</li>
+</ul>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-86d10ee0e5df539a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+<p><strong>连接字符串：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ConnectString:</span><br><span class="line">Provider=Microsoft.ACE.OLEDB.12.0;Extended Properties=&quot;Excel 12.0;HDR=YES&quot;;DataSource=.\Sheet1.xlsx;Mode=ReadWrite;Persist Security Info=False</span><br></pre></td></tr></table></figure>
+<h2 id="使用Orca数据库编辑器编辑Windows-Installer文件"><a href="#使用Orca数据库编辑器编辑Windows-Installer文件" class="headerlink" title="使用Orca数据库编辑器编辑Windows Installer文件"></a>使用Orca数据库编辑器编辑Windows Installer文件</h2><p>由于现有Windows Installer工具的限制，您可能需要直接编辑Windows Installer程序包(.msi)文件。Orca数据库编辑器是Windows Installer SDK中提供的表编辑工具，可以用于编辑.msi文件。Orca编辑器编辑和创建合并模块(.msm)文件、内部一致性计算器(.cub)文件和修补程序创建文件(.pcp)。下面讨论如何使用Orca编辑器来修改.msi文件。</p>
+<h4 id="安装并运行Orca"><a href="#安装并运行Orca" class="headerlink" title="安装并运行Orca"></a>安装并运行Orca</h4><p>从下面的网页下载 Windows Installer SDK 示例、工具和文档：</p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&amp;displaylang=en" target="_blank" rel="noopener">Windows® Server 2003 SP1 Platform SDK Web Install</a></p>
+<p>双击 \Microsoft SDK\bin 文件夹中的 Orca.msi 文件，安装 Orca 编辑器。<br>单击“开始”，指向“程序”，然后单击“Orca”。<br>在“文件”菜单上单击“打开”，然后浏览到要编辑的 .msi 文件</p>
+<h4 id="表"><a href="#表" class="headerlink" title="表"></a>表</h4><ul>
+<li>左窗格列出了 .msi 文件中的表。选择要编辑的表。右窗格的顶部显示了表的字段。您可以展开和折叠这些字段。</li>
+<li>要添加未显示的标准表，请在“表”菜单上单击“添加表”。要删除表，请在“表”菜单上单击“删除表”。必须选择表，“删除表”选项才能显示在菜单上。</li>
+<li>“导出表”和“导入表”选项位于“表”菜单上。“导出表”选项将表导出为可用文本编辑器（如记事本）编辑的文本格式。导出的表具有扩展名 .idt。可以使用“导入表”操作将这些 IDT 表导入到 Orca 编辑器中。</li>
+</ul>
+<h4 id="行"><a href="#行" class="headerlink" title="行"></a>行</h4><ul>
+<li>要向表中添加行，请单击“表”菜单上的“添加行”。将出现一个对话框，其中包含所选表的字段。旁边有一个金色钥匙图案的字段是该表的主键。字段名显示在编辑框的上方，后跟字段类型。如果字段类型后有“必填”一词，则此字段是必填的，只有此字段中填有值才能添加行。</li>
+<li>要删除行，请选择表中的行，然后单击“表”菜单上的“删除行”。</li>
+<li>要编辑行中的现有字段，请在要编辑的字段内双击。</li>
+</ul>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-03-31T14:00:00.000Z" itemprop="datePublished">
+              2018-03-31
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/software/">software</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

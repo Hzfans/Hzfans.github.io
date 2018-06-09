@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flash9d.ocx failed to register HRESULT -2147220473 未注册 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>flash9d.ocx failed to register HRESULT -2147220473 未注册</h1>
+    </header>
+
+    <section>
+      <p>有些时候需要安装低版本Adobe flash player，安装过程中偶会报错“flash9d.ocx failed to register HRESULT -2147220473 未注册”，等类似问题。网上方法众多，不尽奏效。</p>
+<ul>
+<li>卸载所有版本Adobe flash player，然后重装所需版本。（无效）</li>
+<li>断网安装。（无效）</li>
+<li>修改C:\Windows\System32、C:\Windows\SysWOW64等文件夹读写属性。（无效）</li>
+<li>修改注册表属性。（无效）</li>
+<li>删除flash相关键值。 <strong>（有效）</strong></li>
+</ul>
+<h2 id="报错如下"><a href="#报错如下" class="headerlink" title="报错如下"></a>报错如下</h2><div align="center"><br><img src="http://upload-images.jianshu.io/upload_images/5436217-66cb1eff770964d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="70%" height="70%" alt="flash9d.ocx failed to register" align="center"><br></div>
+
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><h3 id="打开注册表"><a href="#打开注册表" class="headerlink" title="打开注册表"></a>打开注册表</h3><a id="more"></a>
+<p>位置：HKEY_LOCAL_MACHINE\SOFTWARE\Macromedia\FlashPlayer\SafeVersions</p>
+<div align="center"><br><img src="http://upload-images.jianshu.io/upload_images/5436217-ffaf26e407f9de54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="70%" height="70%" alt="注册表" align="center"><br></div>
+
+<p>以flash9d.ocx报错为例，故删除注册表中SafeVersions下，9.0键值。删除后重新安装所需版本Adobe flash player即可，不再报错。</p>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-03-08T15:00:00.000Z" itemprop="datePublished">
+              2018-03-08
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/OS/">OS</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/flash/">flash</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

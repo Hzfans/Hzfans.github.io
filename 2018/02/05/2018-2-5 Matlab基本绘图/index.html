@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Matlab 基本绘图 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>Matlab 基本绘图</h1>
+    </header>
+
+    <section>
+      <h2 id="matlab基本绘图指令"><a href="#matlab基本绘图指令" class="headerlink" title="matlab基本绘图指令"></a>matlab基本绘图指令</h2><h3 id="plot-函数的基本使用语法格式为"><a href="#plot-函数的基本使用语法格式为" class="headerlink" title="plot 函数的基本使用语法格式为:"></a>plot 函数的基本使用语法格式为:</h3><p>绘制一条曲线：plot(xdata, ydata, ’color_linestyle_marker’)<br>绘制多条曲线：plot(xdata1, ydata1, ’clm1’, xdata2, ydata2, ’clm2’, …)<br>若在绘制曲线的时候没有指定曲线的色彩、线型和标识符，则MATLAB 使用默认的设置。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = <span class="number">0</span>:<span class="built_in">pi</span>/<span class="number">1000</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">&gt;&gt; y = <span class="built_in">sin</span>(<span class="number">2</span>*x+<span class="built_in">pi</span>/<span class="number">4</span>);</span><br><span class="line">&gt;&gt; plot(x,y)</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置曲线的样式属性"><a href="#设置曲线的样式属性" class="headerlink" title="设置曲线的样式属性"></a>设置曲线的样式属性</h3><p>MATLAB 预先设置了不同的曲线样式属性值，分别控制曲线的色彩、线型和标识符。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">线型</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">标记符</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">颜色</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">示例(md怎么把格子拉长一点呢)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">实线(默认)</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加号符</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">红色 </td><td bgcolor="red"></td>
+</tr>
+<tr>
+<td style="text-align:center">–</td>
+<td style="text-align:center">双划线</td>
+<td style="text-align:center">o</td>
+<td style="text-align:center">空心圆</td>
+<td style="text-align:center">g</td>
+<td style="text-align:center">绿色 </td><td bgcolor="green"></td>
+</tr>
+<tr>
+<td style="text-align:center">:</td>
+<td style="text-align:center">虚线</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">星号</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">蓝色 </td><td bgcolor="blue"></td>
+</tr>
+<tr>
+<td style="text-align:center">-.</td>
+<td style="text-align:center">点画线</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">实心圆</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">青绿色 </td><td bgcolor="Cyan"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">叉号符</td>
+<td style="text-align:center">m</td>
+<td style="text-align:center">洋红色 </td><td bgcolor="Magenta"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">正方形</td>
+<td style="text-align:center">y</td>
+<td style="text-align:center">黄色 </td><td bgcolor="yellow"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">菱形</td>
+<td style="text-align:center">k</td>
+<td style="text-align:center">黑色 </td><td bgcolor="black"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">上三角形</td>
+<td style="text-align:center">w</td>
+<td style="text-align:center">白色 </td><td bgcolor="white"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">v</td>
+<td style="text-align:center">下三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">左三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">右三角形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">五角星</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">h</td>
+<td style="text-align:center">六边形</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<p>LineSpec中设置曲线线型、标识符和颜色三项属性时，控制符的顺序不受限制并可以省略或者部分省略。也就是说<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;r-.*&apos;; &apos;-.r*&apos;; &apos;*-.r&apos;</span><br></pre></td></tr></table></figure></p>
+<p>等形式是等效的，都表示使用红色点划线连接各个节点，各节点使用 * 标识。<br>在同时绘制多条曲线时，如果没有指定曲线属性，plot按顺序循环使用当前坐标系中ColorOrder和LineStyleOrder两个属性。<br>默认情况，MATLAB在每次调用plot函数时将ColorOrder和LineStyleOrder自动重置为DefaultAxesColorOrder和DefaultAxesLineStyleOrder。Default属性我们可以自定义，有效期至MATLAB关闭，Matlab下次启动时将Default属性重置为厂家设置(Factory)。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(<span class="number">0</span>,<span class="string">'DefaultAxesColorOrder'</span>,’r|g|b|k’, <span class="string">'DefaultAxesLineStyleOrder'</span>,<span class="string">'-|-.|--|:'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>使用hold all命令可以阻止调用plot函数时自动重置ColorOrder和LineStyleOrder属性，而是循环使用。注意hold on只是使多次绘制的图形叠加（相当于NextPlot），但不能阻止属性重置。</p>
+<p>MATLAB 图形对象都有自己的属性，通过修改属性就可以修改图形曲线的外观，这也是句柄图形和图形用户界面操作图形对象的方法。绘制曲线时，可以通过修改下列属性完成对曲线细节的设置：</p>
+<ul>
+<li>LineWidth：曲线的宽度，单位为point</li>
+<li>MarkerEdgeColor：曲线时标边缘的色彩</li>
+<li>MarkerFaceColor：填充曲线时标的色彩</li>
+<li>MarkerSize：曲线时标的大小，单位为point</li>
+</ul>
+<p><strong> 注意：四个属性是针对当前坐标系中所有曲线。</strong></p>
+<h3 id="MATLAB-子图"><a href="#MATLAB-子图" class="headerlink" title="MATLAB 子图"></a>MATLAB 子图</h3><p>subplot 函数把现有的图形窗体分割成指定行数和列数的区域，在每个区域内都可以包含一个绘图轴，利用该函数选择不同的绘图区，然后所有的绘图操作都将结果输出到指定的绘图区中。<br>subplot 函数的基本用法如下：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subplot(m,n,p)</span><br></pre></td></tr></table></figure></p>
+<p>其中，m 和n 为将图形窗体分割成的行数和列数，p 为选定的窗体区域的序号，以行元素优先顺序排列。</p>
+<h3 id="控制绘图区域"><a href="#控制绘图区域" class="headerlink" title="控制绘图区域"></a>控制绘图区域</h3><p>所谓MATLAB 的绘图区域是指图形窗体中的轴(Axes)，需要牢记一点，所有MATLAB的图形对象都是绘制在轴的上面，所以控制绘图的区域也就是控制轴的显示区域。</p>
+<h4 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h4><p>axis 函数可以修改图形窗体轴的范围，它的基本语法格式如下：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axis([xmin xmax ymin ymax])</span><br></pre></td></tr></table></figure></p>
+<p>其中，xmin 和 xmax 决定 X 轴的显示范围，ymin 和 ymax 决定 Y 轴的显示范围。</p>
+<h4 id="坐标线间隔"><a href="#坐标线间隔" class="headerlink" title="坐标线间隔"></a>坐标线间隔</h4><p>绘制曲线的轴还需要设置坐标线之间的间隔(Ticks)，在默认的情况下，MATLAB 按照绘制数据的范围设置坐标线的间隔，这种间隔的设置是自动完成的，用户也可以根据自己的需要设置这些间隔，具体的方法是通过设置轴的XTick 或者YTick 属性实现对X 轴或者Y 轴的坐标间隔设置。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(gca,’XTick’, - <span class="built_in">pi</span>:<span class="built_in">pi</span>/<span class="number">4</span>:<span class="built_in">pi</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong> 注意：set 函数和get 函数是用来设置/获取MATLAB 图形对象属性的常用函数。本例子使用gca 函数来获取当前的轴图形对象的句柄。</strong></p>
+<p>修改轴的XTickLabel 或者YTickLabel 属性。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = &#123;’- pi’,’’,’- pi/<span class="number">2</span>’,’’,’<span class="number">0</span>’,’’,’pi/<span class="number">2</span>’,’’,’pi’&#125;</span><br><span class="line">set(gca,’XTickLabel’,label)</span><br></pre></td></tr></table></figure></p>
+<h4 id="增加文本信息"><a href="#增加文本信息" class="headerlink" title="增加文本信息"></a>增加文本信息</h4><p>MATLAB 图形窗体的文本信息主要包括图形标题、文本注释、轴标签和图例等。<br>为图形窗体增加这些文本信息一般有多种途径，或者通过菜单命令，或者通过属性编辑器，或者使用MATLAB 提供的函数。MATLAB 的图形窗体Insert 菜单下包含多个菜单命令可以用来添加这些格式化的文本信息，而通过MATLAB 图形编辑器，配合不同对象的属性编辑器也可以完成添加格式化文本信息的工作。不过这些方法都没有利用函数编写程序<br>简便、灵活。</p>
+<h4 id="添加标题"><a href="#添加标题" class="headerlink" title="添加标题"></a>添加标题</h4><p>添加图形的标题需要使用title 函数，该函数的基本用法为：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title(’string’)</span><br></pre></td></tr></table></figure></p>
+<p>其中，字符串string 为图形窗体的标题，该标题将被自动地设置在轴的正中顶部。</p>
+<h4 id="添加图例-legend"><a href="#添加图例-legend" class="headerlink" title="添加图例(legend)"></a>添加图例(legend)</h4><p>添加轴的图例需要使用函数legend，该函数的基本语法为：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">legend(’string1’, ’string2'...)</span><br></pre></td></tr></table></figure></p>
+<p>其中，字符串string1、string2 为图例的说明性文本，MATLAB 将自动地按照绘制在轴上的曲线的绘制次序选择相应的文本作为图例。</p>
+<h4 id="添加坐标轴标签-label"><a href="#添加坐标轴标签-label" class="headerlink" title="添加坐标轴标签(label)"></a>添加坐标轴标签(label)</h4><p>一般地，可以使用xlabel、ylabel 和zlabel 函数分别为图形窗体的X 轴、Y 轴和Z 轴添加轴标签。以X 轴为例，这三个函数的基本使用语法如下：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xlabel(’string’)</span><br></pre></td></tr></table></figure></p>
+<p>其中，string 就是坐标轴的标签。坐标轴的标签自动与坐标轴<strong>居中对齐</strong>。</p>
+<h4 id="添加文本注释-text"><a href="#添加文本注释-text" class="headerlink" title="添加文本注释(text)"></a>添加文本注释(text)</h4><p>创建文本注释的时候可以将文本注释首先保存在元胞数组中，然后使用text 函数完成向图形窗体添加文本注释的工作。text 函数的基本语法为：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text(x, y, ’string’)</span><br></pre></td></tr></table></figure></p>
+<p>其中，x 和y 是文本注释添加的坐标值，该坐标值使用当前轴系的单位设置，这个坐标也就是文本起始点的坐标。</p>
+<h4 id="格式化文本标注"><a href="#格式化文本标注" class="headerlink" title="格式化文本标注"></a>格式化文本标注</h4><p>创建格式化文本标注的方法：<br>文本标注的字体属性可以在创建文本标注的时候进行设置，其中有关字体本身的属性包括：</p>
+<ul>
+<li>FontName：字体名称，例如Courier、隶书等。</li>
+<li>FontSize：字体大小，整数值，默认为10 points。</li>
+<li>FontWeight：设置字体的加粗属性。</li>
+<li>FontUnits：字体大小的度量单位，默认为point。</li>
+</ul>
+<h4 id="特殊字符标注"><a href="#特殊字符标注" class="headerlink" title="特殊字符标注"></a>特殊字符标注</h4><p>利用<strong> LaTeX 字符集 </strong>和<strong> MATLAB 文本注释 </strong>的定义，就可以在MATLAB 的图形文本标注中使用希腊字符、数学符号或者上标和下标字体等。<br>在MATLAB 图形窗体的所有文本标注中都可以使用这些特殊的文本，比如在标题、坐标轴标签、文本注释中，使用特殊文本时一定要注意不要忘记“\”符号，否则MATLAB就会按照普通文本处理这些字符。除了直接使用附录中的LaTeX 字符集外，还可以用下面的标识符组合完成更丰富的字体标注。</p>
+<ul>
+<li>\bf：加粗字体。</li>
+<li>\it：斜体字。</li>
+<li>\sl：斜体字(很少使用)。</li>
+<li>\rm：正常字体。</li>
+<li>\fontname{fontname}：定义使用特殊的字体名称。</li>
+<li>\fontsize{fontsize}：定义使用特殊的字体大小，单位为FontUnits。</li>
+</ul>
+<p>设置字体的大小或者名称将直接影响接在定义符后面的文本内容，直到下一个字体定<br>义符出现。<br>进行上标或者下标文本的注释需要使用“_”和“^”字符。进行上标标注的方法如下：</p>
+<ul>
+<li>^{superstring} 上标</li>
+<li>_{substring} 下标</li>
+</ul>
+<h2 id="特殊图形函数"><a href="#特殊图形函数" class="headerlink" title="特殊图形函数"></a>特殊图形函数</h2><h3 id="特殊坐标轴系"><a href="#特殊坐标轴系" class="headerlink" title="特殊坐标轴系"></a>特殊坐标轴系</h3><ul>
+<li>loglog：两个坐标轴都使用对数刻度。</li>
+<li>semilogx：x 轴用对数刻度，y 轴用普通线性刻度。</li>
+<li>semilogy：y 轴用对数刻度，x 轴用普通线性刻度。</li>
+</ul>
+<h3 id="绘制特殊图形"><a href="#绘制特殊图形" class="headerlink" title="绘制特殊图形"></a>绘制特殊图形</h3><h4 id="1．条状图和面积图"><a href="#1．条状图和面积图" class="headerlink" title="1．条状图和面积图"></a>1．条状图和面积图</h4><ul>
+<li>bar：绘制二维条状图，将m 行n 列的矩阵绘制成m 组，每组n 个垂直条(bar)。</li>
+<li>barh：绘制二维水平条状图，将m 行n 列的矩阵绘制成m 组，每组n 个水平条(bar)。</li>
+<li>bar3：绘制三维条状图，将m 行n 列的矩阵绘制成m 组，每组n 个垂直条(bar)。</li>
+<li>barh3：绘制三维水平条状图，将m 行n 列的矩阵绘制成m 组，每组n 个水平条(bar)。</li>
+<li>area：绘制面积图，将向量数据绘制成面积图。</li>
+</ul>
+<h4 id="2．饼图"><a href="#2．饼图" class="headerlink" title="2．饼图"></a>2．饼图</h4><ul>
+<li>pie</li>
+<li>pie3</li>
+</ul>
+<h4 id="3．柱状图-直方图"><a href="#3．柱状图-直方图" class="headerlink" title="3．柱状图(直方图)"></a>3．柱状图(直方图)</h4><p>柱状图(直方图)用来显示数据的分布情况，比如显示一组数据的概率分布情况。柱状图可以绘制在普通的直角坐标下，也可以绘制在极坐标下，使用的函数分别为hist 和rose。这两个函数分别计算输入向量中数据落入某一范围的数量，而绘制的柱状高度或者长度则表示落入该范围的数据的个数。</p>
+<ul>
+<li>hist</li>
+<li>rose</li>
+</ul>
+<h4 id="4．离散数据图"><a href="#4．离散数据图" class="headerlink" title="4．离散数据图"></a>4．离散数据图</h4><p>绘制火柴杆图可以使用stem 函数或者stem3 函数，前者绘制二维空间的曲线，后者绘制三维空间的曲线，而阶梯图需要使用stairs 函数。</p>
+<p><strong>除了上述四种类型的特殊绘图函数以外，MATLAB 还能够绘制矢量方向图和等高线图，<br>这些函数包括:</strong></p>
+<ul>
+<li>compass ：绘制放射线图。</li>
+<li>feather：绘制线性放射线图。</li>
+<li>quiver：绘制场图,绘制矢量场（带箭头方向）.</li>
+<li>quiver3：绘制三维场图。</li>
+<li>contour：绘制等高线轮廓图。</li>
+<li>contour3：绘制三维等高线轮廓图。</li>
+<li>contourf：绘制填充的等高线图。</li>
+<li>clabel：标识等高线标签。</li>
+<li>meshc：绘制三维mesh 曲线和等高线。</li>
+<li>surfc：绘制三维surf 曲线和等高线。</li>
+</ul>
+<hr>
+<h2 id="以下是干货-未完待续"><a href="#以下是干货-未完待续" class="headerlink" title="以下是干货(未完待续)"></a>以下是干货(未完待续)</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>matlab绘图分为<strong>figure</strong>和<strong>axis</strong>,<strong>object</strong>三级。<br>一个figure即为一个窗口，可以使用figure命令新建窗口。<br>一个figure中可以包含若干个axis，一般情况下只包含一个。而使用subplot时则包含多个axis。新建axis 可以使用命令axes。<br>分为绘图区，由属性Position确定；绘图区外面有显示坐标轴和文字的区域，大小由TightInset确定；此外，还允许有一定的margin，最终axis所占的位置及大小，由属性OuterPosition确定。也就是说，设置的postion属性应该满足在OuterPosition内。这些位置属性的单位由Units属性确定。</p>
+<h3 id="axes常用对象的属性"><a href="#axes常用对象的属性" class="headerlink" title="axes常用对象的属性"></a>axes常用对象的属性</h3><ul>
+<li>title(‘new’,’color’,’r’);给坐标轴命名为new，红色</li>
+<li>title({‘this title’,’has 2 ‘})；命名为两行的标题</li>
+<li>grid on：在图像中显示网格</li>
+<li>children：控制axes对象的子对象，即image\light\line\patch\rectangle\surface和text等对象，可通过get(gca,’children’)来返回当前坐标轴的子对象构成的句柄值向量</li>
+<li>字体属性<ul>
+<li>Fontangle字体角度（正常normal或斜体italic/oblique)</li>
+<li>Fontname字体名称</li>
+<li>fontsize字体大小（单位由Fontunits决定）</li>
+<li>fontunits字体单位（points/normalized/inches/centimeters/pixels)</li>
+<li>fontweight字体粗细(normal/bold/light/demi）</li>
+<li>gridlinestyle决定坐标轴网格线的样式，‘-’为实线‘- -’为虚线‘：’为点线‘-.’为点虚线</li>
+<li>e.g., plot(1:10);grid on;set(gca,’gridlinestyle’,’-.’);将当前坐标轴显示的网格线为点-虚线</li>
+</ul>
+</li>
+<li>linewidth 定义X，Y和Z轴的轴线宽度（以点单位定义）</li>
+<li>NextPlot：有效值为add|replace|replacechildren，默认为replace。add表示使用当前的坐标轴，把新的图形对象加到此坐标轴中是一般保留的做法，replace表示重新设置坐标轴的所有属性（Position除外），也就是在绘图前会删除当前坐标轴和它的子对象。replacechildren表示移除当前坐标轴中所有子对象，但不重新设置坐标轴的所有属性</li>
+<li>Outerposition决定坐标轴外边界的位置。由位置向量[left，bottom，width，height]组成，其中left，bottom表示相对于绘图窗口左下角的位置，width，height表示区域尺寸，默认为[0 0 1 1]</li>
+<li>Position由位置向量[left，bottom，width，height]组成，决定坐标轴位置</li>
+<li>Tag定义本坐标轴的卷展栏，因为每一个对象都有自己唯一的识别码即tag，以方便findobj函数查找坐标轴句柄值。</li>
+<li>visible决定坐标轴是否可见</li>
+<li>set(gca,’xgrid’,’on’)绘制X轴垂直网格线<br>set(gca,’gridlinestyle’,’:’,’linewidth’,3)设置网格线线条类型和宽度<br>set(gca,’box’,’on’)将图轴方框绘制出来</li>
+<li>set(gca,’xscale’,’linear’);将X轴刻度设为线性；set(gca,’yscale’,’log’);将Y轴刻度设为对数</li>
+<li>Xtick，Ytick，Ztick：控制X，Y，Z轴坐标刻度记号的位置，即控制坐标轴上刻度记号的位置以及每隔多少值会到下一个刻度记号的位置，同时还需要配合Xticklabel、Yticklabel、Zticklabel属性来调整。<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set(gca,<span class="string">'Xticklabel'</span>,&#123;<span class="string">'1'</span>;<span class="string">'10'</span>;<span class="string">'100'</span>&#125;)</span><br><span class="line">set(gca,<span class="string">'Xticklabel'</span>,<span class="string">'1|10|100'</span>)</span><br><span class="line">set(gca,<span class="string">'Xticklabel'</span>,[<span class="number">1</span>;<span class="number">10</span>;<span class="number">100</span>])</span><br><span class="line">set(gca,<span class="string">'Xticklabel'</span>,[<span class="string">'1  '</span>;<span class="string">'10 '</span>;<span class="string">'100'</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="常用控制属性"><a href="#常用控制属性" class="headerlink" title="常用控制属性"></a>常用控制属性</h3><h4 id="matlab单轴对象的常用控制属性"><a href="#matlab单轴对象的常用控制属性" class="headerlink" title="matlab单轴对象的常用控制属性"></a>matlab单轴对象的常用控制属性</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">XLim,Ylim,ZLim</td>
+<td style="text-align:left">确定坐标轴范围</td>
+</tr>
+<tr>
+<td style="text-align:left">XLimMode,YLimMode,ZLimMode</td>
+<td style="text-align:left">决定坐标轴范围的模式（手动或matlab自动）</td>
+</tr>
+<tr>
+<td style="text-align:left">XTick,YTick,ZTick</td>
+<td style="text-align:left">确定坐标轴刻度位置</td>
+</tr>
+<tr>
+<td style="text-align:left">XTickMode,YTickMode,ZTickMode</td>
+<td style="text-align:left">决定坐标轴刻度位置的模式</td>
+</tr>
+<tr>
+<td style="text-align:left">XTickLabel, YTickLabel,ZTickLabel</td>
+<td style="text-align:left">确定轴刻度符号标记</td>
+</tr>
+<tr>
+<td style="text-align:left">XTickLabelMode,YTickLabelMode,YTickLabelMode</td>
+<td style="text-align:left">决定轴刻度符号标记的模式</td>
+</tr>
+<tr>
+<td style="text-align:left">XDir,YDir,ZDir</td>
+<td style="text-align:left">确定坐标轴方向</td>
+</tr>
+</tbody>
+</table>
+<h4 id="matlab的照相机属性"><a href="#matlab的照相机属性" class="headerlink" title="matlab的照相机属性"></a>matlab的照相机属性</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CameraPosition</td>
+<td style="text-align:left">照相机的位置：[x,y,z]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraPositionMode</td>
+<td style="text-align:left">照相机的位置的取值模式：[{auto}/manual]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraTarget</td>
+<td style="text-align:left">照相机的目标：[x,y,z]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraTargetMode</td>
+<td style="text-align:left">照相机的目标的取值模式：[{auto}/manual]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraUpVector</td>
+<td style="text-align:left">照相机的正位向量：[x,y,z]<strong>就是谁朝上的意思</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">CameraUpVectorMode</td>
+<td style="text-align:left">照相机的正位向量的取值模式：[{auto}/manual]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraViewAngle</td>
+<td style="text-align:left">照相机的视角：[0 180]</td>
+</tr>
+<tr>
+<td style="text-align:left">CameraViewAngleMode</td>
+<td style="text-align:left">照相机视角的取值模式：[{auto}/manual]</td>
+</tr>
+<tr>
+<td style="text-align:left">Projection</td>
+<td style="text-align:left">投影方式：[{orthographic}/perspective]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="示例function-绘制条形图bar"><a href="#示例function-绘制条形图bar" class="headerlink" title="示例function 绘制条形图bar"></a>示例function 绘制条形图bar</h4><p>个人最近使用的一个creatBar函数<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Create bar of production template</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[figure1]</span>= <span class="title">createBar</span><span class="params">(data, xLabel, yLabel, Title)</span></span></span><br><span class="line">  </span><br><span class="line"> figure1 = figure;</span><br><span class="line">  </span><br><span class="line"> <span class="comment">% Create axes</span></span><br><span class="line"> axes1 = axes(...</span><br><span class="line">   <span class="string">'CameraUpVector'</span>,[<span class="number">0</span> <span class="number">1</span> <span class="number">0</span>],... <span class="comment">%定义向上的方向, 指定为[x y z]形式的三元素方向向量</span></span><br><span class="line">   <span class="string">'FontName'</span>,<span class="string">'Times New Roman'</span>,...</span><br><span class="line">   <span class="string">'FontSize'</span>,<span class="number">13</span>,...</span><br><span class="line">   <span class="string">'FontWeight'</span>,<span class="string">'demi'</span>,...  <span class="comment">%字体粗细(normal/bold/light/demi半粗体）</span></span><br><span class="line">   <span class="string">'Parent'</span>,figure1);</span><br><span class="line"> box(<span class="string">'on'</span>); <span class="comment">% 设置值：on off是否显示绘图区的外框线</span></span><br><span class="line"> hold(<span class="string">'all'</span>);</span><br><span class="line">  </span><br><span class="line"> <span class="comment">% Create bar</span></span><br><span class="line"> bar1 = bar(data,...</span><br><span class="line">   <span class="string">'BarLayout'</span>,<span class="string">'stacked'</span>,...</span><br><span class="line">   <span class="string">'LineWidth'</span>,<span class="number">1</span>);</span><br><span class="line">  </span><br><span class="line"> <span class="comment">% Create xlabel</span></span><br><span class="line"> xlabel(xLabel,...</span><br><span class="line">   <span class="string">'FontName'</span>,<span class="string">'Times New Roman'</span>,...</span><br><span class="line">   <span class="string">'FontSize'</span>,<span class="number">13</span>,...</span><br><span class="line">   <span class="string">'FontWeight'</span>,<span class="string">'demi'</span>);</span><br><span class="line">  </span><br><span class="line"> <span class="comment">% Create ylabel</span></span><br><span class="line"> ylabel(yLabel,...</span><br><span class="line">   <span class="string">'FontName'</span>,<span class="string">'Times New Roman'</span>,...</span><br><span class="line">   <span class="string">'FontSize'</span>,<span class="number">13</span>,...</span><br><span class="line">   <span class="string">'FontWeight'</span>,<span class="string">'demi'</span>);</span><br><span class="line"> </span><br><span class="line"> title(Title,...</span><br><span class="line">   <span class="string">'FontName'</span>,<span class="string">'Times New Roman'</span>,...</span><br><span class="line">   <span class="string">'FontSize'</span>,<span class="number">14</span>,...</span><br><span class="line">   <span class="string">'FontWeight'</span>,<span class="string">'bold'</span>);</span><br><span class="line"> <span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>《MATLAB基础与编程入门》<br><a href="http://cn.mathworks.com/help/matlab/ref/matlab.graphics.axis.axes-properties.html?searchHighlight=CameraUpVector&amp;s_tid=doc_srchtitle" target="_blank" rel="noopener">http://cn.mathworks.com/help/matlab/ref/matlab.graphics.axis.axes-properties.html?searchHighlight=CameraUpVector&amp;s_tid=doc_srchtitle</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-02-05T15:00:00.000Z" itemprop="datePublished">
+              2018-02-05
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/plot/">plot</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

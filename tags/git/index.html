@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <section class="search">
+	<form class="site-search-form">
+		<input type="text" id="local-search-input" class="st-search-input" />
+	</form>
+	<div id="local-search-result" class="local-search-result-cls"></div>
+	<script type="text/javascript" id="local.search.active">
+	var inputArea       = document.querySelector("#local-search-input");
+	inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+	inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+	</script>
+</section>
+<ul class="Index">
+  
+    <header class='PageTitle'>
+        <h1>{ git }</h1>
+    </header>
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/02/02/2018-2-2 关于git提示warning LF will be replaced by CRLF终极解答/">关于git提示&#34;warning LF will be replaced by CRLF&#34;终极解答</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-02-02T15:00:00.000Z" itemprop="datePublished">
+    2018-02-02
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/git/">git</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/CRLF/">CRLF</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/github/">github</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="一、发现问题"><a href="#一、发现问题" class="headerlink" title="一、发现问题"></a>一、发现问题</h3><p>windows平台下使用git add，git deploy 文件时经常出现“warning: LF will be replaced by CRLF” 的提示。</p>
+<h5 id="网上很多解决办法提到："><a href="#网上很多解决办法提到：" class="headerlink" title="网上很多解决办法提到："></a>网上很多解决办法提到：</h5><p>设置core.autocrlf=false，windows也用LF换行。<br>除了记事本，其他编辑器都可以正常编辑。<br><strong>而没有给出具体原因和分析，现在加以补充。</strong></p>
+<h3 id="二、分析问题"><a href="#二、分析问题" class="headerlink" title="二、分析问题"></a>二、分析问题</h3><p>格式化与多余的空白字符，特别是在跨平台情况下，有时候是一个令人发指的问题。由于编辑器的不同或者文件行尾的换行符在 Windows 下被替换了，一些细微的空格变化会不经意地混入提交，造成麻烦。虽然这是小问题，但它会极大地扰乱跨平台协作。<br>其实，这是因为在文本处理中，<a href="http://en.wikipedia.org/wiki/Carriage_return" target="_blank" rel="noopener">CR</a>（<strong>C</strong>arriage<strong>R</strong>eturn），<a href="http://en.wikipedia.org/wiki/Line_feed" target="_blank" rel="noopener">LF</a>（<strong>L</strong>ine<strong>F</strong>eed），CR/LF是不同操作系统上使用的换行符，具体如下：</p>
+<h5 id="换行符‘-n’和回车符‘-r’"><a href="#换行符‘-n’和回车符‘-r’" class="headerlink" title="换行符‘\n’和回车符‘\r’"></a>换行符‘\n’和回车符‘\r’</h5><ul>
+<li>回车符就是回到一行的开头，用符号r表示，十进制ASCII代码是13，十六进制代码为0x0D，回车（return）；</li>
+<li>换行符就是另起一行，用n符号表示，ASCII代码是10，十六制为0x0A， 换行（newline）。</li>
+</ul>
+<p>所以我们平时编写文件的回车符应该确切来说叫做回车换行符。</p>
+        
+          <div class="more-link">
+            <a href="/2018/02/02/2018-2-2 关于git提示warning LF will be replaced by CRLF终极解答/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/01/02/2018-1-2 git删除所有Commits提交历史记录，变为全新仓库/">git删除所有Commits提交历史记录，变为全新仓库</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2018-01-02T13:00:00.000Z" itemprop="datePublished">
+    2018-01-02
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/git/">git</a> }
+  </li>
+
+
+  </ul>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/github/">github</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p><strong>个人感觉一般两个情况下，会想有这个需要：</strong></p>
+<ul>
+<li><p>一个是：需要把旧项目提交到Git上，但是原来的某版历史记录中可能会有项目密码等敏感信息。这时候需要删除这些历史记录，形成一个全新的仓库，并且希望保持代码不变。</p>
+</li>
+<li><p>另一个是：处女座！隔三差五看到过往的Commits心烦，没有原因。</p>
+</li>
+</ul>
+<p><strong>1. Checkout</strong></p>
+<p>新建一个branch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --orphan latest_branch</span><br></pre></td></tr></table></figure>
+<p><strong>2. Add all the files</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
+<p><strong>3. Commit the changes</strong></p>
+        
+          <div class="more-link">
+            <a href="/2018/01/02/2018-1-2 git删除所有Commits提交历史记录，变为全新仓库/#more">Read On »</a>
+          </div>
+        
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

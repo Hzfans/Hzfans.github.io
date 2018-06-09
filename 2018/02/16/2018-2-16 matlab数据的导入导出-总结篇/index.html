@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>matlab数据的导入导出-总结篇 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>matlab数据的导入导出-总结篇</h1>
+    </header>
+
+    <section>
+      <h2 id="支持的导入和导出文件格式"><a href="#支持的导入和导出文件格式" class="headerlink" title="支持的导入和导出文件格式"></a>支持的导入和导出文件格式</h2><p>下表显示了可以从 MATLAB 应用程序导入和导出的文件格式。</p>
+<div class="table-responsive"><table class="table table-condensed" width="100%"><br><colgroup><col class="tcol1" width="22%"><col class="tcol2" width="16%"><col class="tcol3" width="27%"><col class="tcol4" width="18%"><col class="tcol5" width="18%"></colgroup><thead><tr><th><p>文件内容</p></th><th><p>扩展名</p></th><th><p>说明</p></th><th><p>导入函数</p></th><th><p>导出函数</p></th></tr></thead><tbody><tr><td rowspan="2">MATLAB 格式化数据</td><td rowspan="2"><p>MAT</p></td><td><p>保存的 MATLAB 工作区</p></td><td><p id="bt3h_1o-1" class="cellmonospace"><a href="../ref/load.html"><code class="function">load</code></a></p></td><td><p id="bt3h_1r-1" class="cellmonospace"><a href="../ref/save.html"><code class="function">save</code></a></p></td></tr><tr><td><p>访问 MATLAB 工作区中的部分变量</p></td><td><a href="../ref/matfile.html"><code class="function">matfile</code></a></td><td><a href="../ref/matfile.html"><code class="function">matfile</code></a></td></tr><tr><td rowspan="4"><p>文本</p></td><td rowspan="4"><p>任意文本，包括：<br><br>CSV<br><br>TXT</p></td><td><p>逗号分隔的数字</p></td><td><p id="bt3h_2s-1" class="cellmonospace"><a href="../ref/csvread.html"><code class="function">csvread</code></a></p></td><td><p id="bt3h_2v-1" class="cellmonospace"><a href="../ref/csvwrite.html"><code class="function">csvwrite</code></a> </p></td></tr><tr><td><p>分隔数字</p></td><td><p id="bt3h_28-1" class="cellmonospace"><a href="../ref/dlmread.html"><code class="function">dlmread</code></a></p></td><td><p id="bt3h_3d-1" class="cellmonospace"><a href="../ref/dlmwrite.html"><code class="function">dlmwrite</code></a></p></td></tr><tr><td><p>分隔数字或者文本和数字混合</p></td><td><p id="bt3h_3v-1" class="cellmonospace"><a href="../ref/textscan.html"><code class="function">textscan</code></a></p></td><td>无</td></tr><tr><td><p>列向分隔数字或者文本和数字混合</p></td><td><p><a href="../ref/readtable.html"><code class="function">readtable</code></a></p></td><td><p><a href="../ref/writetable.html"><code class="function">writetable</code></a></p></td></tr><tr><td rowspan="2"><p>电子表格</p></td><td rowspan="2"><p>XLS<br><br>XLSX<br><br>XLSM</p><p>XLSB（仅限安装了 Windows<sup>®</sup> 版 <span>Microsoft<sup>®</sup> Excel<sup>®</sup></span> 的系统）</p><p>XLTM（仅导入）<br><br>XLTX（仅导入）</p><p>ODS（具有 COM 接口的系统）</p></td><td><p>工作表或电子表格范围</p></td><td><p><a href="../ref/xlsread.html"><code class="function">xlsread</code></a></p></td><td><p><a href="../ref/xlswrite.html"><code class="function">xlswrite</code></a></p></td></tr><tr><td><p>工作表或电子表格范围中的列向数据</p></td><td><p><a href="../ref/readtable.html"><code class="function">readtable</code></a></p></td><td><p><a href="../ref/writetable.html"><code class="function">writetable</code></a></p></td></tr><tr><td>可扩展标记语言</td><td><p>XML</p></td><td><p>XML 格式化文本</p></td><td><p id="bt3h_5v-1" class="cellmonospace"><a href="../ref/xmlread.html"><code class="function">xmlread</code></a></p></td><td><p id="bt3h_5v-2" class="cellmonospace"><a href="../ref/xmlwrite.html"><code class="function">xmlwrite</code></a></p></td></tr></tbody></table><br></div>
+
+<a id="more"></a>
+<h2 id="MATLAB-格式化数据"><a href="#MATLAB-格式化数据" class="headerlink" title="MATLAB 格式化数据"></a>MATLAB 格式化数据</h2><h3 id="load"><a href="#load" class="headerlink" title="load"></a>load</h3><p>将文件变量加载到工作区中</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">load(filename) load(filename) 从 filename 加载数据。</span><br><span class="line">load(filename,variables) 加载 MAT 文件 filename 中的指定变量。</span><br><span class="line">load(filename,<span class="string">'-ascii'</span>) 将 filename 视为 ASCII 文件，而不管文件扩展名如何。</span><br><span class="line">load(filename,<span class="string">'-mat'</span>) 将 filename 视为 MAT 文件，而不管文件扩展名如何。</span><br><span class="line">load(filename,<span class="string">'-mat'</span>,variables) 加载 filename 中的指定变量。</span><br><span class="line">S = load(___) 使用前面语法组中的任意输入参数将数据加载到 S 中。</span><br><span class="line">load filename 是命令形式的语法。命令形式需要的特殊字符更少。</span><br></pre></td></tr></table></figure>
+<h3 id="save"><a href="#save" class="headerlink" title="save"></a>save</h3><p>将工作区变量保存到文件中</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">save(filename) 将当前工作区中的所有变量保存在MATLAB格式的二进制文件（MAT 文件）filename 中。如果 filename 已存在，save 会覆盖该文件。</span><br><span class="line">save(filename,variables) 仅保存 variables 指定的结构体数组的变量或字段。</span><br><span class="line">save(filename,variables,fmt) 以 fmt 指定的文件格式保存。variables 参数为可选参数。如果您不指定 variables，save 函数将所有变量保存在工作区中。</span><br><span class="line">save(filename,variables,version) 保存为 version 指定的 MAT 文件版本。variables 参数为可选参数。</span><br><span class="line">save(filename,variables,version,<span class="string">'-nocompression'</span>) 将变量保存到 MAT 文件，而不压缩。<span class="string">'-nocompression'</span> 标志仅支持 <span class="number">7.3</span> 版的 MAT 文件。因此，您必须将 version 指定为 <span class="string">'-v7.3'</span>。variables 参数为可选参数。</span><br><span class="line">save(filename,variables,<span class="string">'-append'</span>) 将新变量添加到一个现有文件中。如果 MAT 文件中已经存在变量，则 save 会使用工作区中的值覆盖它。</span><br><span class="line">save(filename,variables,<span class="string">'-append'</span>,<span class="string">'-nocompression'</span>) 将新变量添加到一个现有文件中，而不进行压缩。现有文件必须是 <span class="number">7.3</span> 版的 MAT 文件。</span><br><span class="line">save filename 是命令形式的语法。命令形式需要的特殊字符更少。</span><br></pre></td></tr></table></figure>
+<h4 id="fmt-文件格式"><a href="#fmt-文件格式" class="headerlink" title="fmt - 文件格式"></a>fmt - 文件格式</h4><ul>
+<li>‘-mat’ 二进制的 MAT 文件格式。</li>
+<li>‘-ascii’ 具有 8 位精度的文本格式。</li>
+<li>‘-ascii’,’-tabs’ 具有 8 位精度的以制表符分隔的文本格式。</li>
+<li>‘-ascii’,’-double’ 具有 16 位精度的文本格式。</li>
+<li>‘-ascii’,’-double’,’-tabs’ 具有 16 位精度的以制表符分隔的文本格式。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="创建两个变量，将其保存到-ASCII-文件中，然后查看文件内容。"><a href="#创建两个变量，将其保存到-ASCII-文件中，然后查看文件内容。" class="headerlink" title="创建两个变量，将其保存到 ASCII 文件中，然后查看文件内容。"></a>创建两个变量，将其保存到 ASCII 文件中，然后查看文件内容。</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">10</span>);</span><br><span class="line">q = <span class="built_in">ones</span>(<span class="number">10</span>);</span><br><span class="line">save(<span class="string">'pqfile.txt'</span>,<span class="string">'p'</span>,<span class="string">'q'</span>,<span class="string">'-ascii'</span>)</span><br><span class="line">type(<span class="string">'pqfile.txt'</span>)</span><br><span class="line"></span><br><span class="line">save pqfile.txt p q -ascii</span><br></pre></td></tr></table></figure>
+<h5 id="将变量保存到-7-3-版的-MAT-文件中，而不进行压缩"><a href="#将变量保存到-7-3-版的-MAT-文件中，而不进行压缩" class="headerlink" title="将变量保存到 7.3 版的 MAT 文件中，而不进行压缩"></a>将变量保存到 7.3 版的 MAT 文件中，而不进行压缩</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="built_in">rand</span>(<span class="number">5</span>);</span><br><span class="line">B = <span class="built_in">magic</span>(<span class="number">10</span>);</span><br><span class="line">save(<span class="string">'myFile.mat'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'-v7.3'</span>,<span class="string">'-nocompression'</span>)</span><br><span class="line"></span><br><span class="line">save myFile.mat A B -v7<span class="number">.3</span> -nocompression</span><br><span class="line"><span class="string">'-nocompression'</span> 标志有助于更快地保存那些大于 <span class="number">2</span> GB 或者不会从压缩中受益的变量。</span><br></pre></td></tr></table></figure>
+<h5 id="将变量追加到-MAT-文件中"><a href="#将变量追加到-MAT-文件中" class="headerlink" title="将变量追加到 MAT 文件中"></a>将变量追加到 MAT 文件中</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">10</span>);</span><br><span class="line">q = <span class="built_in">ones</span>(<span class="number">10</span>);</span><br><span class="line">save(<span class="string">'test.mat'</span>,<span class="string">'p'</span>,<span class="string">'q'</span>)</span><br><span class="line"></span><br><span class="line">a = <span class="number">50</span>;</span><br><span class="line">save(<span class="string">'test.mat'</span>,<span class="string">'a'</span>,<span class="string">'-append'</span>)</span><br><span class="line">whos(<span class="string">'-file'</span>,<span class="string">'test.mat'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="matfile"><a href="#matfile" class="headerlink" title="matfile"></a>matfile</h3><p>直接访问和更改 MAT 文件中的变量，而不加载到内存中</p>
+<h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = matfile(filename) 创建 MAT 文件对象 m，该对象连接到名为 filename 的 MAT 文件。该对象允许您直接访问和更改 MAT 文件中的变量，而不必将变量加载到内存中。</span><br><span class="line">matfile 函数提供的部分加载和保存所需的内存比 load 和 save 命令少，因为后两者始终处理全部变量。</span><br><span class="line">m = matfile(filename,<span class="string">'Writable'</span>,isWritable) 启用或禁用对文件的写访问权限。</span><br></pre></td></tr></table></figure>
+<h4 id="isWritable-对-MAT-文件的写访问权限"><a href="#isWritable-对-MAT-文件的写访问权限" class="headerlink" title="isWritable - 对 MAT 文件的写访问权限"></a>isWritable - 对 MAT 文件的写访问权限</h4><p>对 MAT 文件的写访问权限，指定为 true 或 false。</p>
+<ul>
+<li>true 允许保存到 MAT 文件。如果文件为只读文件，MATLAB 会使用 fileattrib 函数更改系统权限。</li>
+<li>false 禁止保存到 MAT 文件。MATLAB 不更改系统权限。</li>
+</ul>
+<p>对于新文件，默认值为 true；对于现有文件，默认值为 false。<br>数据类型：logical</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><p>任意文本，包括：CSV, TXT</p>
+<h3 id="csvread-逗号分隔的数字"><a href="#csvread-逗号分隔的数字" class="headerlink" title="csvread 逗号分隔的数字"></a>csvread 逗号分隔的数字</h3><p>读取逗号分隔值 (CSV) 文件</p>
+<h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M = csvread(filename) 将逗号分隔值 (CSV) 格式化文件读入数组 M 中。该文件只能包含数值。</span><br><span class="line">M = csvread(filename,R1,C1) 从行偏移量 R1 和列偏移量 C1 开始读取文件中的数据。例如，偏移量 R1=<span class="number">0</span>、C1=<span class="number">0</span> 指定文件中的第一个值。</span><br><span class="line">M = csvread(filename,R1,C1,[R1 C1 R2 C2]) 仅读取行偏移量 R1 和 R2 及列偏移量 C1 和 C2 界定的范围。另一种定义范围的方法是使用电子表格表示法（例如 <span class="string">'A1..B7'</span>）而非 [<span class="number">0</span> <span class="number">0</span> <span class="number">6</span> <span class="number">1</span>]。</span><br></pre></td></tr></table></figure>
+<h3 id="csvwrite-逗号分隔的数字"><a href="#csvwrite-逗号分隔的数字" class="headerlink" title="csvwrite 逗号分隔的数字"></a>csvwrite 逗号分隔的数字</h3><p>写入逗号分隔值文件</p>
+<h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">csvwrite(filename,M) 将矩阵 M 作为逗号分隔值写入 filename 中。将 filename 指定为字符矢量或字符串，例如 'csvlist.dat' 或 "csvlist.dat"。</span><br><span class="line">csvwrite(filename,M,row,col) 将矩阵 M 写入以指定行和列偏移开始的 filename 中。行和列参数从零开始，因此 row=<span class="number">0</span> 和 C=<span class="number">0</span> 指定文件中的第一个值。</span><br></pre></td></tr></table></figure>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>csvwrite 用换行符但不用回车符终止每行。<br>csvwrite 最多写入五位有效数字。如果您需要更高精度，请使用带精度参数的 dlmwrite。<br>csvwrite 不接受输入矩阵 M 的元胞数组。要导出仅包含数值数据的元胞数组，请在调用 csvwrite 之前使用 cell2mat 将元胞数组转换为数值矩阵。要导出包含混合字母和数值数据的元胞数组（其中每个元胞包含一个元素），可使用 xlswrite 创建 Excel® 电子表格（如果您的系统安装了 Excel）。</p>
+<h3 id="dlmread-分隔数字"><a href="#dlmread-分隔数字" class="headerlink" title="dlmread 分隔数字"></a>dlmread 分隔数字</h3><h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">M = dlmread(filename) 将 ASCII 分隔的数值数据文件读取到矩阵 M。dlmread 函数从该文件中检测到分隔符，并将重复的空白视为一个分隔符。</span><br><span class="line">M = dlmread(filename,delimiter) 使用指定的分隔符读取该文件中的数据，并将重复的分隔符视为单独的分隔符。</span><br><span class="line">M = dlmread(filename,delimiter,R1,C1) 从行偏移量 R1 和列偏移量 C1 开始读取。例如，偏移量 R1=<span class="number">0</span>、C1=<span class="number">0</span> 指定文件中的第一个值。</span><br><span class="line">要指定行和列的偏移量而不指定分隔符，请将空字符用作占位符，例如 M = dlmread(filename,<span class="string">''</span>,<span class="number">2</span>,<span class="number">1</span>)。</span><br><span class="line">M = dlmread(filename,delimiter,[R1 C1 R2 C2]) 仅读取行偏移量 R1 和 R2 及列偏移量 C1 和 C2 界定的范围。另一种定义范围的方法是使用电子表格表示法（例如 <span class="string">'A1..B7'</span>）而非 [<span class="number">0</span> <span class="number">0</span> <span class="number">6</span> <span class="number">1</span>]。</span><br></pre></td></tr></table></figure>
+<h3 id="dlmwrite-分隔数字"><a href="#dlmwrite-分隔数字" class="headerlink" title="dlmwrite 分隔数字"></a>dlmwrite 分隔数字</h3><h4 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dlmwrite(filename,M) 将数组 M 中的数值数据写入一个 ASCII 格式的文件 filename，并使用默认分隔符 (,) 分隔各数组元素。如果文件 filename 已存在，则 dlmwrite 将覆盖该文件。</span><br><span class="line">dlmwrite(filename,M,<span class="string">'-append'</span>) 将数据追加到现有文件 filename 的末尾。</span><br><span class="line">dlmwrite(___,Name,Value) 使用一个或多个名称-值对组参数另外指定分隔符、换行符、偏移量和精度选项。</span><br><span class="line">dlmwrite(filename,M,delimiter) 将数组 M 写入文件 filename，并使用指定分隔符 delimiter 分隔各数组元素。</span><br><span class="line">dlmwrite(filename,M,delimiter,row,col) 从目标文件中指定的第 row 行和第 col 列开始写入数组。前导行和列用 delimiter 分隔的空元素填充。</span><br></pre></td></tr></table></figure>
+<h4 id="名称-值对组参数"><a href="#名称-值对组参数" class="headerlink" title="名称-值对组参数"></a>名称-值对组参数</h4><p>指定可选的、以逗号分隔的 Name,Value 对组参数。Name 为参数名称，Value 为对应的值。Name 必须放在单引号 (‘ ‘) 中。您可采用任意顺序指定多个名称和值对组参数，如 Name1,Value1,…,NameN,ValueN 所示。<br>示例：dlmwrite(‘myFile.txt’,M,’precision’,4,’delimiter’,’ ‘) 写入数组 M 中的数值，带四位有效位数并使用空白字符分隔。</p>
+<h5 id="‘delimiter’-用于分隔数组各元素的分隔符"><a href="#‘delimiter’-用于分隔数组各元素的分隔符" class="headerlink" title="‘delimiter’ - 用于分隔数组各元素的分隔符"></a>‘delimiter’ - 用于分隔数组各元素的分隔符</h5><h5 id="‘roffset’-行偏移量："><a href="#‘roffset’-行偏移量：" class="headerlink" title="‘roffset’ - 行偏移量："></a>‘roffset’ - 行偏移量：</h5><p>行偏移量，指定为包含 ‘roffset’ 和标量、以逗号分隔的对组。行偏移量指示写入数值数据前所跳过的行数。这些行将用指定的分隔符填充。将新数据追加到现有文件时，新数据距现有数据的末尾有一定偏移。<br>行偏移量从零开始，因此 ‘roffset’,0 指示 MATLAB 从目标文件的第一行开始写入（即默认值）。但是，当追加到文件时，’roffset’,0 指示 MATLAB 从紧随现有数据后的第一行开始写入。<br>示例：’roffset’,2</p>
+<h5 id="‘coffset’-列偏移量"><a href="#‘coffset’-列偏移量" class="headerlink" title="‘coffset’ - 列偏移量"></a>‘coffset’ - 列偏移量</h5><p>距目标文件左侧的列偏移量，指定为用逗号分隔的对组，由 ‘coffset’ 和标量组成。列偏移量指示写入数值数据前所跳过的列数。这些列将用指定的分隔符分隔。<br>列偏移量从零开始，因此 ‘coffset’,0 指示 MATLAB 从目标文件的第一列开始写入（即默认值）。<br>示例：’coffset’,1</p>
+<h5 id="‘precision’-数值精度"><a href="#‘precision’-数值精度" class="headerlink" title="‘precision’ - 数值精度"></a>‘precision’ - 数值精度</h5><p>向文件写入数据时使用的数值精度，指定为用逗号分隔的对组，由 ‘precision’ 和标量或以 % 开头的 C 样式格式设定符（例如 ‘%10.5f’）组成。如果 precision 的值为标量，则其指示的是有效位数的个数。<br>示例：’precision’,3<br>示例：’precision’,’%10.5f’<br>数据类型：single | double | int8 | int16 | int32 | int64 | uint8 | uint16 | uint32 | uint64 | char</p>
+<h5 id="‘newline’-行终止符"><a href="#‘newline’-行终止符" class="headerlink" title="‘newline’ - 行终止符"></a>‘newline’ - 行终止符</h5><p>行终止符，指定为逗号分隔的对组，由 ‘newline’ 和使用回车符/换行符 (CR/LF) 的 ‘pc’ 或使用换行符 (LF) 的 ‘unix’ 所组成。<br>示例：’newline’,’pc’</p>
+<h3 id="xlsread-工作表或电子表格范围"><a href="#xlsread-工作表或电子表格范围" class="headerlink" title="xlsread 工作表或电子表格范围"></a>xlsread 工作表或电子表格范围</h3><p>读取 Microsoft Excel 电子表格文件</p>
+<h4 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">num = xlsread(filename) 读取名为 filename 的 Microsoft Excel电子表格工作表中的第一张工作表，并在一个矩阵中返回数值数据。</span><br><span class="line">num = xlsread(filename,sheet) 读取指定的工作表。</span><br><span class="line">num = xlsread(filename,xlRange) 从工作簿的第一个工作表的指定范围内读取数据。使用 Excel 范围语法，例如 <span class="string">'A1:C3'</span>。</span><br><span class="line">num = xlsread(filename,sheet,xlRange) 读取指定的工作表和范围。</span><br><span class="line">num = xlsread(filename,sheet,xlRange,<span class="string">'basic'</span>) 在 basic 导入模式下读取电子表格中的数据。如果您的计算机未安装 Windows版 Excel，xlsread 会自动在 basic 导入模式下运行，该模式支持 XLS、XLSX、XLSM、XLTX 和 XLTM 文件。如果不指定所有参数，请使用空字符矢量 <span class="string">''</span> 作为占位符，例如，num = xlsread(filename,<span class="string">''</span>,<span class="string">''</span>,<span class="string">'basic'</span>)。</span><br><span class="line">[num,txt,raw] = xlsread(___) 还使用先前语法中的任何输入参数，在元胞数组 txt 中返回文本字段，在元胞数组 raw 中返回数值数据和文本数据。</span><br><span class="line">___ = xlsread(filename,<span class="number">-1</span>) 打开一个 Excel 窗口以便按交互方式来选择数据。选择工作表，将鼠标拖放到所需范围上，然后点击确定。只有安装了 Microsoft Excel 软件的 Windows 计算机才支持此语法。</span><br><span class="line">[num,txt,raw,custom] = xlsread(filename,sheet,xlRange,<span class="string">''</span>,processFcn)（其中 processFcn 是函数句柄）读取电子表格，对数据调用 processFcn，并在数组 num 中以数值数据的形式返回最终结果。xlsread 函数在元胞数组 txt 中返回文本字段、在元胞数组 raw 中返回数值和文本数据，并在数组 custom 中返回 processFcn 的第二个输出。xlsread 函数不会更改电子表格中存储的数据。只有安装了 Excel 软件的 Windows 计算机才支持此语法。</span><br></pre></td></tr></table></figure>
+<h3 id="xlswrite-工作表或电子表格范围"><a href="#xlswrite-工作表或电子表格范围" class="headerlink" title="xlswrite 工作表或电子表格范围"></a>xlswrite 工作表或电子表格范围</h3><p>写入 Microsoft Excel 电子表格文件</p>
+<h4 id="语法-8"><a href="#语法-8" class="headerlink" title="语法"></a>语法</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xlswrite(filename,A) 将矩阵 A 写入 Microsoft® Excel® 电子表格工作簿 filename 中的第一张工作表，从单元格 A1 开始写入。</span><br><span class="line">xlswrite(filename,A,sheet) 将数据写入指定的工作表。</span><br><span class="line">xlswrite(filename,A,xlRange) 将数据写入工作簿的第一个工作表中由 xlRange 指定的矩形区域内。使用 Excel 范围语法，例如 <span class="string">'A1:C3'</span>。</span><br><span class="line">xlswrite(filename,A,sheet,xlRange) 将数据写入指定的工作表和范围。</span><br><span class="line">status = xlswrite(___) 使用先前语法中的任何输入参数返回写入操作的状态。当操作成功时，status 为 <span class="number">1</span>。否则，status 为 <span class="number">0</span>。</span><br><span class="line">[status,message] = xlswrite(___) 还在结构体 message 中返回写入操作生成的任何警告或错误消息。</span><br></pre></td></tr></table></figure>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><h5 id="将工作表读取到数值矩阵"><a href="#将工作表读取到数值矩阵" class="headerlink" title="将工作表读取到数值矩阵"></a>将工作表读取到数值矩阵</h5><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">创建一个名为 myExample.xlsx 的 Excel 文件。</span><br><span class="line">values = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ; <span class="number">4</span>, <span class="number">5</span>, <span class="string">'x'</span> ; <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">headers = &#123;<span class="string">'First'</span>,<span class="string">'Second'</span>,<span class="string">'Third'</span>&#125;;</span><br><span class="line">xlswrite(<span class="string">'myExample.xlsx'</span>,[headers; values]);</span><br><span class="line">读取第一个工作表中的数值数据。</span><br><span class="line">filename = <span class="string">'myExample.xlsx'</span>;</span><br><span class="line">A = xlsread(filename)</span><br></pre></td></tr></table></figure>
+<p>myExample.xlsx 的 Sheet1 包含：</p>
+<p>   First    Second    Third<br>       1         2        3<br>       4         5    x<br>       7         8        9</p>
+<p>A =<br>     1     2     3<br>     4     5   NaN<br>     7     8     9</p>
+<h5 id="请求数值、文本和原始数据"><a href="#请求数值、文本和原始数据" class="headerlink" title="请求数值、文本和原始数据"></a>请求数值、文本和原始数据</h5><p>从第一个示例中的 Excel 文件中请求数值数据、文本数据和合并数据。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[num,txt,raw] = xlsread(<span class="string">'myExample.xlsx'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>num =<br>     1     2     3<br>     4     5   NaN<br>     7     8     9</p>
+<p>txt =<br>    ‘First’    ‘Second’    ‘Third’<br>    ‘’         ‘’          ‘’<br>    ‘’         ‘’          ‘x’    </p>
+<p>raw =<br>    ‘First’    ‘Second’    ‘Third’<br>    [    1]    [     2]    [    3]<br>    [    4]    [     5]    ‘x’<br>    [    7]    [     8]    [    9]</p>
+<blockquote>
+<p><a href="https://mathworks.com/" target="_blank" rel="noopener">https://mathworks.com/</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-02-16T15:00:00.000Z" itemprop="datePublished">
+              2018-02-16
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

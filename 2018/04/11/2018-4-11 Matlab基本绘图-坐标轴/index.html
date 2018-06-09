@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Matlab基本绘图-坐标轴 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>Matlab基本绘图-坐标轴</h1>
+    </header>
+
+    <section>
+      <p>使用matlab的绘图函数绘图时系统默认设置了一些属性，例如坐标轴字号大小等并根据情况自动设置坐标轴显示的上下限，这些属性可以通过函数灵活改动。</p>
+<h3 id="坐标轴的设置"><a href="#坐标轴的设置" class="headerlink" title="坐标轴的设置"></a>坐标轴的设置</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 绘图</span></span><br><span class="line">figure;</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴线宽,加边框,坐标字号</span></span><br><span class="line">axes(<span class="string">'linewidth'</span>,<span class="number">1</span>, <span class="string">'box'</span>, <span class="string">'on'</span>, <span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴label</span></span><br><span class="line">xlabel(<span class="string">'时间(s)'</span>,<span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line">ylabel(<span class="string">'压力(pa)'</span>,<span class="string">'FontSize'</span>,<span class="number">16</span>);</span><br><span class="line">grid on;</span><br><span class="line">hold on;</span><br><span class="line">plot(X, Y, <span class="string">'k'</span>, <span class="string">'linewidth'</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%设置坐标轴上下限</span></span><br><span class="line">xlim([<span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line">ylim([<span class="number">0</span>, <span class="number">100</span>]);</span><br><span class="line"></span><br><span class="line">MATLAB 操纵坐标轴</span><br><span class="line">axis off;        <span class="comment">% 去掉坐标轴</span></span><br><span class="line">axis tight;                     <span class="comment">% 紧坐标轴</span></span><br><span class="line">axis equal;                     <span class="comment">% 等比坐标轴</span></span><br><span class="line">axis([<span class="number">-0.1</span>, <span class="number">8.1</span>, <span class="number">-1.1</span>, <span class="number">1.1</span>]);   <span class="comment">% 坐标轴的显示范围</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% gca: gca, h=figure(...);</span></span><br><span class="line">set(gca, <span class="string">'XLim'</span>,[<span class="number">3</span> <span class="number">40</span>]);                   <span class="comment">% X轴的数据显示范围</span></span><br><span class="line">set(gca, <span class="string">'XTick'</span>,[<span class="number">-3.14</span>,<span class="number">0</span>,<span class="number">3.14</span>] );         <span class="comment">% X轴的记号点</span></span><br><span class="line">set(gca, <span class="string">'XTicklabel'</span>,&#123;<span class="string">'-pi'</span>,<span class="string">'0'</span>,<span class="string">'pi'</span>&#125;);   <span class="comment">% X轴的记号</span></span><br><span class="line">set(gca, <span class="string">'XTick'</span>, []);                     <span class="comment">% 清除X轴的记号点</span></span><br><span class="line">set(gca, <span class="string">'XGrid'</span>,<span class="string">'on'</span>);                    <span class="comment">% X轴的网格</span></span><br><span class="line">set(gca, <span class="string">'XDir'</span>,<span class="string">'reverse'</span>);                <span class="comment">% 逆转X轴</span></span><br><span class="line">set(gca, <span class="string">'XColor'</span>,<span class="string">'red'</span>);                  <span class="comment">% X轴的颜色</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Matlab-图对象"><a href="#Matlab-图对象" class="headerlink" title="[Matlab]图对象"></a>[Matlab]图对象</h3><h4 id="划重点"><a href="#划重点" class="headerlink" title="划重点"></a>划重点</h4><p>首先要了解的是Matlab是面向对象的。<br>最高等级的对象是screen，它定义了figure可以用的最大szie。</p>
+<p>screen下面是figure。<br>figue就是你画图的时候跳出来的那个新的对话窗口。如果figure变化，screen是不会跟着变化的。但screen变化的话，figure就要跟着变化了。</p>
+<p>figure下面是axes。<br>axes是那个窗口里面你要画的东西。axes的大小和位置取决于figure，如果你放大缩小figure的大小的话，里面的图线也会跟着变化的。</p>
+<h4 id="设置坐标轴参数"><a href="#设置坐标轴参数" class="headerlink" title="设置坐标轴参数"></a>设置坐标轴参数</h4><p>（1）axis，设置当前轴的坐标范围；<br>（2）axes，用指定的特征创建一个新坐标轴；<br>（3）get和set，查询或设置已有轴的各种特性；<br>（4）gca，返回当前轴的句柄。<br>如果图形中有多个坐标轴，在当前轴为最后图形创建的图形的坐标轴。Matlab绘制图形数据时候，会自动选择坐标轴范围，用axis可以设置新的坐标轴的范围，用一个具有四个元素的矢量表示坐标范围，格式为：<br>axis([xmin,xmax,ymin,ymax])；如果不指定某一个方向范围可以使用inf或－inf表示，则产生半自动坐标轴范围。<br>对于线性坐标轴，matlab会自动根据数据范围设置等间距的坐标轴数值标记，用set，修改gca变量中xtick和ytick的属性值，可以自定义坐标轴标记。如<br>set（gca,’ytick’,[-0.3:0.1:1]）;<br>可以使用字符矢量通过修改gca变量中的’XtickLabel’实现标记字符，如：<br>set(gca,’Xtick’,-pi:pi/2:pi);<br>set(gca,’XtickLabel’,{‘-pi’,’-pi/2’,’0’,’pi/2’,’pi’};<br>Axis square设置两坐标轴长度成相等。<br>Axis equel设置坐标轴标记间距相等；<br>Axis equel tight；设置图形以紧缩方式显示。</p>
+<h4 id="图形窗口"><a href="#图形窗口" class="headerlink" title="图形窗口"></a>图形窗口</h4><p>figure(2);%以第二个图形窗口作为当前图形输出的窗口；<br>subplot(m,n,i);%分成m×n个小区域，I指定当前绘图区域；<br>colordef 颜色；%如white，black等，设置绘图背景颜色。</p>
+<h4 id="图形标注"><a href="#图形标注" class="headerlink" title="图形标注"></a>图形标注</h4><p>Matlab提供了几个函数用于图形的标注：<br>函数名功能描述<br>Title添加图形标题<br>Xlabel，xlabel，zlabel添加X，Y，Z轴标注<br>Legend在图形中添加图例<br>Text在指定位置显示文本<br>Gtext使用鼠标将指定文本放在图形中的位置<br>如下为添加标题，坐标轴标注实例：</p>
+<p>legend函数的基本用法是：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LEGEND(string1,string2,string3, ...)</span><br><span class="line">legend(字符串<span class="number">1</span>，字符串<span class="number">2</span>，字符串<span class="number">3</span>，…，参数)</span><br></pre></td></tr></table></figure></p>
+<p>分别将字符串1、字符串2、字符串3……标注到图中，每个字符串对应的图标为画图时的图标。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot(x,sin(x),&apos;.b&apos;,x,cos(x),&apos;+r&apos;)</span><br><span class="line">legend(&apos;sin&apos;,&apos;cos&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>这样可以把”.”标识为’sin’，把”+”标识为”cos”<br>还可以用LEGEND(…,’Location’,LOC) 来指定图例标识框的位置</p>
+<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p>‘North’              inside plot box near top<br>‘South’              inside bottom<br>‘East’               inside right<br>‘West’               inside left<br>‘NorthEast’          inside top right (default)<br>‘NorthWest’<br>…<br>0 尽量不与数据冲突，自动放置在最佳位置<br>1 放置在图形的右上角<br>2 放置在图形的左上角<br>3 放置在图形的左下角<br>4 放置在图形的右下角<br>-1 放置在图形视窗的外右边</p>
+<h5 id="其他常用补充"><a href="#其他常用补充" class="headerlink" title="其他常用补充"></a>其他常用补充</h5><p>1：指定legend显示的位置：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">legend(&#123;<span class="string">'str1'</span>,<span class="string">'str2'</span>,<span class="string">'strn'</span>&#125;,<span class="number">1</span>);</span><br><span class="line">legend(&#123;<span class="string">'str1'</span>,<span class="string">'str2'</span>,<span class="string">'strn'</span>&#125;,<span class="number">2</span>);</span><br><span class="line">legend(&#123;<span class="string">'str1'</span>,<span class="string">'str2'</span>,<span class="string">'strn'</span>&#125;,<span class="string">'Location'</span>,<span class="string">'SouthEast'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>2：指定显示某几条曲线的legend：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H(<span class="built_in">i</span>) = plot(data); <span class="comment">%画了n个图</span></span><br><span class="line">legend(H([<span class="number">1</span> <span class="number">3</span> <span class="number">5</span>],<span class="string">'1,'</span><span class="number">3</span><span class="string">','</span><span class="number">5</span>’);</span><br></pre></td></tr></table></figure></p>
+<p>3：legend横排<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h = legend(H([<span class="number">1</span> <span class="number">3</span> <span class="number">5</span>],<span class="string">'1,'</span><span class="number">3</span><span class="string">','</span><span class="number">5</span>’);</span><br><span class="line">set(h,<span class="string">'Orientation'</span>,<span class="string">'horizon'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>4：不显示方框：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h = legend(H([<span class="number">1</span> <span class="number">3</span> <span class="number">5</span>],<span class="string">'1,'</span><span class="number">3</span><span class="string">','</span><span class="number">5</span>’);</span><br><span class="line">set(h,<span class="string">'Box'</span>,<span class="string">'off'</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="http://blog.sciencenet.cn/blog-2824237-1027799.html" target="_blank" rel="noopener">http://blog.sciencenet.cn/blog-2824237-1027799.html</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-04-11T14:00:00.000Z" itemprop="datePublished">
+              2018-04-11
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/matlab/">matlab</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/plot/">plot</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

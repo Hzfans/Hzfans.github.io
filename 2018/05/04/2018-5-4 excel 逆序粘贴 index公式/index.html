@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>excel逆序粘贴 index公式 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>excel逆序粘贴 index公式</h1>
+    </header>
+
+    <section>
+      <h3 id="将一组数据进行逆序的引用或者粘贴到其他地方"><a href="#将一组数据进行逆序的引用或者粘贴到其他地方" class="headerlink" title="将一组数据进行逆序的引用或者粘贴到其他地方"></a>将一组数据进行逆序的引用或者粘贴到其他地方</h3><h5 id="例一列由Excel自动生成序号，目标是将其按相反的顺序粘贴或者引用到右边的空白区域中；"><a href="#例一列由Excel自动生成序号，目标是将其按相反的顺序粘贴或者引用到右边的空白区域中；" class="headerlink" title="例一列由Excel自动生成序号，目标是将其按相反的顺序粘贴或者引用到右边的空白区域中；"></a>例一列由Excel自动生成序号，目标是将其按相反的顺序粘贴或者引用到右边的空白区域中；</h5><h5 id="在右侧空白区域选定与源数据相同大小的一块区域；"><a href="#在右侧空白区域选定与源数据相同大小的一块区域；" class="headerlink" title="在右侧空白区域选定与源数据相同大小的一块区域；"></a>在右侧空白区域选定与源数据相同大小的一块区域；</h5><h5 id="在编辑栏中输入公式-INDEX-C-4-C-27-28-ROW-；"><a href="#在编辑栏中输入公式-INDEX-C-4-C-27-28-ROW-；" class="headerlink" title="在编辑栏中输入公式: =INDEX($C$4:$C$27,28-ROW())；"></a>在编辑栏中输入公式: =INDEX($C$4:$C$27,28-ROW())；</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">公式释义：</span><br><span class="line">=INDEX($C$4:$C$27,28-ROW())</span><br><span class="line">$C$4:$C$27：绝对引用源数据区域；</span><br><span class="line">28：源数据区域最底层的行数+1；</span><br><span class="line">Row：当前数据数据所在行号，是一个整数；</span><br></pre></td></tr></table></figure>
+<div align="center"><br><img src="https://upload-images.jianshu.io/upload_images/5436217-726372fc8036c4d9.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="50%" height="50%" alt=" " align="center"><br></div>
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-05-04T14:00:00.000Z" itemprop="datePublished">
+              2018-05-04
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Excel/">Excel</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>
