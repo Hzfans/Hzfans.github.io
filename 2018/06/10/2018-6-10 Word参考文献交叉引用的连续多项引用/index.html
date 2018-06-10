@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Categories | 花子凡</title>
+  <title>Word参考文献交叉引用的连续多项引用 | 花子凡</title>
   
   
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
@@ -81,72 +81,60 @@
             <div>
   <article class='ContentView'>
     <header class='PageTitle'>
-        <h1>Categories</h1>
+        <h1>Word参考文献交叉引用的连续多项引用</h1>
     </header>
 
     <section>
-      
-
-      
-        <ul class="Tags">
-          
-  <li class="tag-list">
-  { <a href="/categories/github/">github</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/OS/">OS</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/开心就好/">开心就好</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/Python/">Python</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/数学规划/">数学规划</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/Office/">Office</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/iPhone/">iPhone</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/Matlab/">Matlab</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/葡萄酒/">葡萄酒</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/English/">English</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/Mining-Engineering/">Mining Engineering</a> }
-  </li>
-
-  <li class="tag-list">
-  { <a href="/categories/Html/">Html</a> }
-  </li>
+      <p>在论文中，需要利用“交叉引用”对“参考文献”进行编号引用，以“[a-b]”引用格式实现连续多个文献引用，更新域后不受影响。以实现以“[1-3]”交叉引用格式来引用[1]、[2]、[3]三个连续参考文献为例说明本方法。（不懂、不会交叉引用的估计也不会思考这个，在此不赘述交叉引用方法）。</p>
+<a id="more"></a>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
+<li>分别使用“交叉引用”依次插入所需应用文献编号范围的第一个和最后一个，所引用处出现“[1]  [3]”；</li>
+<li>在引用处对两个编号操作：点击鼠标右键-选择“切换域代码”；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]变为 &#123;REF _Ref444874348 \r \h&#125;</span><br><span class="line">[3]变为 &#123;REF _Ref444874357 \r \h&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对代码域进行编辑，设置引用显示格式，分别后面加入字符#“[0”、#“0]”</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]的域代码变为 &#123;REF _Ref444874348 \r \h\#&quot;[0&quot;&#125;</span><br><span class="line">[3]的域代码变为 &#123;REF _Ref444874357 \r \h\#&quot;0]&quot;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用鼠标分别选择修改过的代码域，点击键盘”F9“更新域，引用号码变为”[13]“,在中间认为加上破折号”[1-3]“,并选中一起按下”shift、ctrl、+“，应用号变为上标。</li>
+</ul>
+<blockquote>
+<p><a href="http://www.iku8.com/wiki/86696481.html" target="_blank" rel="noopener">http://www.iku8.com/wiki/86696481.html</a></p>
+</blockquote>
 
 
-        </ul>
       
 
     </section>
     
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-10T14:00:00.000Z" itemprop="datePublished">
+              2018-06-10
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/office/">office</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/word/">word</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
     
 </article>
 
+  
 </div>
 
             <footer>

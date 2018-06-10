@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Word公式图表自动编号与交叉引用 | 花子凡</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="Shell">
+    <div class="sidebar">
+		<aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/upleftbackground.jpg)">
+        <div class='av-pic' style="background-image: url(/assets/avatar.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div class="sidebartitle">花子凡</div>
+        
+            <div>一个为了生活努力的骚年</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a href="https://github.com/Hzfans" target="_blank">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.weibo.com/1874440207" target="_blank">
+                    <img src="/assets/weibo.svg" />
+                </a>
+            
+        
+            
+                <a href="https://www.jianshu.com/u/8ab93013d761" target="_blank">
+                    <img src="/assets/jianshu.svg" />
+                </a>
+            
+        
+            
+                <a href="https://Hzfans.github.io/atom.xml" target="_blank">
+                    <img src="/assets/rss.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+	</div>
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>Word公式图表自动编号与交叉引用</h1>
+    </header>
+
+    <section>
+      <p>自动编号和交叉引用的好处不再赘述，谁用谁知道。<br>在网上找了一些在word中插入公式编号的方法，经试验，下面的方法最好用，在交叉引用的时候，可以只引用公式编号，而不把整个公式的内容也引用上。</p>
+<a id="more"></a>
+<h4 id="设置指标位并保存至样式，方便使用"><a href="#设置指标位并保存至样式，方便使用" class="headerlink" title="设置指标位并保存至样式，方便使用"></a>设置指标位并保存至样式，方便使用</h4><p>个人习惯：<br>制表位位置：39字符，可使编号正好顶头右侧；<br>对齐方式：左对齐；</p>
+<h4 id="编辑公式样式"><a href="#编辑公式样式" class="headerlink" title="编辑公式样式"></a>编辑公式样式</h4><ul>
+<li>在公式后tab到需要插入编号的合适位置，回车！没看错是 回车 。</li>
+<li>主菜单-&gt;引用-&gt;插入题注。题注-&gt;选项，选择公式（equation）；题注-&gt;编号，选择合适的编号格式。确定后，可以看到编号已插入。这时公式编号行是“题注”样式，公式还是原来的样式。</li>
+<li>将光标移到公式行的行尾，按下Ctrl+Alt+Enter/Ctrl+Alt+Return键插入一个样式分隔符。这时公式编号行会连到公式行的末尾。看上去就是在同一行。这时公式编号行还是“题注”样式，公式行也还是原来的样式。Ctrl+Alt+Enter键对应的命令是“InsertStyleSeparator”（样式分隔符）。如果通过快捷键调用不出该命令，可以通过主菜单-&gt;文件-&gt;选项-&gt;自定义功能区-&gt;所有命令，找到该命令，将命令按钮放到工具栏上。</li>
+<li>在需要引用公式的地方用“插入”-&gt;“引用”-&gt;“交叉引用”引用公式编号，可以选择“整项题注”引用公式编号行的所有内容。</li>
+</ul>
+<p>注：这么做是为了交叉引用的时候，只引用公式编号，而不把整个公式的内容也引用上。如果只是简单的进行插入题注，在交叉引用的时候，不管怎么选，都会把整个公式的内容都引用上。</p>
+<h4 id="编辑公式编号"><a href="#编辑公式编号" class="headerlink" title="编辑公式编号"></a>编辑公式编号</h4><p>公式右击选择，切换域代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（&#123;Styleref  1\s&#125;-&#123;Seq 公式 \*Arabic \s1&#125;）</span><br></pre></td></tr></table></figure></p>
+<p>域代码，Styleref  1\s表示公式所在的几章几节，其中1代表一级标题号，可以为2，即二级标题号，{Seq 公式 *Arabic \s1}是公式自动编号代码。<br>注：域代码很强大，根据不同需要灵活调整。在域代码右击编辑，可自定义。</p>
+<h4 id="编辑其他公式"><a href="#编辑其他公式" class="headerlink" title="编辑其他公式"></a>编辑其他公式</h4><p>第一个公式编辑完成后，接下来的公式就非常简单了。<br>全选刚编辑公式所在行，即选择第一个制表位，公式，和公式编号。复制该内容。在新公式行，粘贴刚所选内容。点击公式，进入公式编辑，删除原有公式，输入新公式，关闭公式编辑器。选中按F9，更新域。则第二个公式自动编号成功。其他公式类似。</p>
+<h4 id="公式交叉引用"><a href="#公式交叉引用" class="headerlink" title="公式交叉引用"></a>公式交叉引用</h4><p>点击插入，选择引用，在选择交叉引用，进入交叉引用界面，引用类型：选择公式，引用类容：整项题注，选择插入公式标号，点击插插入，即可在文档中看到刚引用的公式，全选，按F9更新域，显示交叉引用和原公式编号一致。</p>
+<blockquote>
+<p><a href="https://jingyan.baidu.com/article/64d05a024fce76de55f73bf6.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/64d05a024fce76de55f73bf6.html</a><br><a href="https://blog.csdn.net/symoriaty/article/details/71084139" target="_blank" rel="noopener">https://blog.csdn.net/symoriaty/article/details/71084139</a></p>
+</blockquote>
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-06-10T14:00:00.000Z" itemprop="datePublished">
+              2018-06-10
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/office/">office</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/word/">word</a> }
+  </li>
+
+
+            </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2018 - Hzfans  , CC BY-NC-SA 4.0 </div>
+    <div>
+    Powered by Hzfans
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>var sp = new Pager('data-pager-shell')</script>
+<script type="text/javascript" src="/js/pager/love.js"></script>
+<script type="text/javascript" src="/js/pager/local_search.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(st)):(document.title=""+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},3e3))})</script>
+</body>
+</html>

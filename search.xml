@@ -3,6 +3,84 @@
   
     
     <entry>
+      <title><![CDATA[Word参考文献交叉引用的连续多项引用]]></title>
+      <url>/2018/06/10/2018-6-10%20Word%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E7%9A%84%E8%BF%9E%E7%BB%AD%E5%A4%9A%E9%A1%B9%E5%BC%95%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>在论文中，需要利用“交叉引用”对“参考文献”进行编号引用，以“[a-b]”引用格式实现连续多个文献引用，更新域后不受影响。以实现以“[1-3]”交叉引用格式来引用[1]、[2]、[3]三个连续参考文献为例说明本方法。（不懂、不会交叉引用的估计也不会思考这个，在此不赘述交叉引用方法）。</p>
+<a id="more"></a>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
+<li>分别使用“交叉引用”依次插入所需应用文献编号范围的第一个和最后一个，所引用处出现“[1]  [3]”；</li>
+<li>在引用处对两个编号操作：点击鼠标右键-选择“切换域代码”；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]变为 &#123;REF _Ref444874348 \r \h&#125;</span><br><span class="line">[3]变为 &#123;REF _Ref444874357 \r \h&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对代码域进行编辑，设置引用显示格式，分别后面加入字符#“[0”、#“0]”</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]的域代码变为 &#123;REF _Ref444874348 \r \h\#&quot;[0&quot;&#125;</span><br><span class="line">[3]的域代码变为 &#123;REF _Ref444874357 \r \h\#&quot;0]&quot;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用鼠标分别选择修改过的代码域，点击键盘”F9“更新域，引用号码变为”[13]“,在中间认为加上破折号”[1-3]“,并选中一起按下”shift、ctrl、+“，应用号变为上标。</li>
+</ul>
+<blockquote>
+<p><a href="http://www.iku8.com/wiki/86696481.html" target="_blank" rel="noopener">http://www.iku8.com/wiki/86696481.html</a></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Office </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> office </tag>
+            
+            <tag> word </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Word公式图表自动编号与交叉引用]]></title>
+      <url>/2018/06/10/2018-6-10%20Word%E5%85%AC%E5%BC%8F%E5%9B%BE%E8%A1%A8%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>自动编号和交叉引用的好处不再赘述，谁用谁知道。<br>在网上找了一些在word中插入公式编号的方法，经试验，下面的方法最好用，在交叉引用的时候，可以只引用公式编号，而不把整个公式的内容也引用上。</p>
+<a id="more"></a>
+<h4 id="设置指标位并保存至样式，方便使用"><a href="#设置指标位并保存至样式，方便使用" class="headerlink" title="设置指标位并保存至样式，方便使用"></a>设置指标位并保存至样式，方便使用</h4><p>个人习惯：<br>制表位位置：39字符，可使编号正好顶头右侧；<br>对齐方式：左对齐；</p>
+<h4 id="编辑公式样式"><a href="#编辑公式样式" class="headerlink" title="编辑公式样式"></a>编辑公式样式</h4><ul>
+<li>在公式后tab到需要插入编号的合适位置，回车！没看错是 回车 。</li>
+<li>主菜单-&gt;引用-&gt;插入题注。题注-&gt;选项，选择公式（equation）；题注-&gt;编号，选择合适的编号格式。确定后，可以看到编号已插入。这时公式编号行是“题注”样式，公式还是原来的样式。</li>
+<li>将光标移到公式行的行尾，按下Ctrl+Alt+Enter/Ctrl+Alt+Return键插入一个样式分隔符。这时公式编号行会连到公式行的末尾。看上去就是在同一行。这时公式编号行还是“题注”样式，公式行也还是原来的样式。Ctrl+Alt+Enter键对应的命令是“InsertStyleSeparator”（样式分隔符）。如果通过快捷键调用不出该命令，可以通过主菜单-&gt;文件-&gt;选项-&gt;自定义功能区-&gt;所有命令，找到该命令，将命令按钮放到工具栏上。</li>
+<li>在需要引用公式的地方用“插入”-&gt;“引用”-&gt;“交叉引用”引用公式编号，可以选择“整项题注”引用公式编号行的所有内容。</li>
+</ul>
+<p>注：这么做是为了交叉引用的时候，只引用公式编号，而不把整个公式的内容也引用上。如果只是简单的进行插入题注，在交叉引用的时候，不管怎么选，都会把整个公式的内容都引用上。</p>
+<h4 id="编辑公式编号"><a href="#编辑公式编号" class="headerlink" title="编辑公式编号"></a>编辑公式编号</h4><p>公式右击选择，切换域代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（&#123;Styleref  1\s&#125;-&#123;Seq 公式 \*Arabic \s1&#125;）</span><br></pre></td></tr></table></figure></p>
+<p>域代码，Styleref  1\s表示公式所在的几章几节，其中1代表一级标题号，可以为2，即二级标题号，{Seq 公式 *Arabic \s1}是公式自动编号代码。<br>注：域代码很强大，根据不同需要灵活调整。在域代码右击编辑，可自定义。</p>
+<h4 id="编辑其他公式"><a href="#编辑其他公式" class="headerlink" title="编辑其他公式"></a>编辑其他公式</h4><p>第一个公式编辑完成后，接下来的公式就非常简单了。<br>全选刚编辑公式所在行，即选择第一个制表位，公式，和公式编号。复制该内容。在新公式行，粘贴刚所选内容。点击公式，进入公式编辑，删除原有公式，输入新公式，关闭公式编辑器。选中按F9，更新域。则第二个公式自动编号成功。其他公式类似。</p>
+<h4 id="公式交叉引用"><a href="#公式交叉引用" class="headerlink" title="公式交叉引用"></a>公式交叉引用</h4><p>点击插入，选择引用，在选择交叉引用，进入交叉引用界面，引用类型：选择公式，引用类容：整项题注，选择插入公式标号，点击插插入，即可在文档中看到刚引用的公式，全选，按F9更新域，显示交叉引用和原公式编号一致。</p>
+<blockquote>
+<p><a href="https://jingyan.baidu.com/article/64d05a024fce76de55f73bf6.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/64d05a024fce76de55f73bf6.html</a><br><a href="https://blog.csdn.net/symoriaty/article/details/71084139" target="_blank" rel="noopener">https://blog.csdn.net/symoriaty/article/details/71084139</a></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Office </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> office </tag>
+            
+            <tag> word </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Matlab R2009b破解版license到期]]></title>
       <url>/2018/06/09/2018-6-9%20Matlab%20R2009b%E7%A0%B4%E8%A7%A3%E7%89%88license%E5%88%B0%E6%9C%9F/</url>
       <content type="html"><![CDATA[<p>最近由于某些原因需要用到旧版本的Matlab, 但是网上给出的一些破解方法，到期时间为2017年11月11日。有人提出修改电脑系统时间来避开这个问题，今天在一篇博客上发现了一个非常简单的方法，可以解决该问题。</p>
@@ -77,14 +155,16 @@
       
         <categories>
             
-            <category> Excel </category>
+            <category> Office </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Excel </tag>
+            <tag> excel </tag>
+            
+            <tag> office </tag>
             
         </tags>
         
@@ -244,6 +324,29 @@
     </entry>
     
     <entry>
+      <title><![CDATA[2018加拿大安大略省法定公众假期]]></title>
+      <url>/2018/03/31/2018-3-31%202018%E5%8A%A0%E6%8B%BF%E5%A4%A7%E5%AE%89%E5%A4%A7%E7%95%A5%E7%9C%81%E6%B3%95%E5%AE%9A%E5%85%AC%E4%BC%97%E5%81%87%E6%9C%9F/</url>
+      <content type="html"><![CDATA[<p>2018 Canada Ontario Statutory Holidays<br>2018 加拿大安大略省法定公众假期</p>
+<h5 id="19-02-2018-Family-Day-家庭日"><a href="#19-02-2018-Family-Day-家庭日" class="headerlink" title="19-02-2018 Family Day 家庭日"></a>19-02-2018 Family Day 家庭日</h5><p>Family Day又称“家庭日”，除了让人们得到充分的休息之外，也是父母带孩子一起去游玩娱乐的好节日。</p>
+<h5 id="23-02-2018-Ends-of-Winter-Reading-Week"><a href="#23-02-2018-Ends-of-Winter-Reading-Week" class="headerlink" title="23-02-2018 Ends of Winter Reading Week"></a>23-02-2018 Ends of Winter Reading Week</h5><p>Study Week 对于学生来说是很特别的一段时间，通常会发生在学期中间。在Study Week期间，学校会停课，将这一周的时间留给学生自由安排学习日程。通常期中考试的时间会安排在Study Week附近，所以这一周你会看到人满为患的图书馆，安静的宿舍楼。当然，也有机会看到朋友圈或Facebook上学霸们发的旅游照片。</p>
+<a id="more"></a>
+<h5 id="30-03-2018-Good-Friday-圣周五–耶稣受难日"><a href="#30-03-2018-Good-Friday-圣周五–耶稣受难日" class="headerlink" title="30-03-2018 Good Friday 圣周五–耶稣受难日"></a>30-03-2018 Good Friday 圣周五–耶稣受难日</h5><p>这一天是耶稣的受难日。基督徒可以参加特别的教会服务，即使他们在今年的其他时间里没有经常去教堂。耶稣受难日是许多基督徒哀悼祈祷的日子。蜡烛往往被扑灭，雕像、绘画和十字架被披上黑色，紫色或灰色的布。对于不是基督徒的加拿大人来说，这是一个受欢迎的春假，有些人会用来拜访家人或朋友。</p>
+<h5 id="02-04-2018-Easter-Monday-复活节星期一"><a href="#02-04-2018-Easter-Monday-复活节星期一" class="headerlink" title="02-04-2018 Easter Monday 复活节星期一"></a>02-04-2018 Easter Monday 复活节星期一</h5><p>根据基督教圣经，复活节星期一是复活节后的第二天，纪念耶稣基督的复活。复活节星期一也是许多加拿大人的节日。一些加拿大人在复活节星期一休假，有些则是为期四天的周末。那些短暂休假或者去拜访过家人或朋友的人经常在周一复活节回家。对于其他人来说，这是一个吃复活节彩蛋的机会。人们可以根据天气情况，在户外享受美好时间。复活节星期一休息时，学校、企业和组织关闭。公共交通服务可能会缩短时间。</p>
+<h5 id="21-05-2018-Victoria-Day-维多利亚日"><a href="#21-05-2018-Victoria-Day-维多利亚日" class="headerlink" title="21-05-2018 Victoria Day 维多利亚日"></a>21-05-2018 Victoria Day 维多利亚日</h5><p>一些城市会举行烟花汇演或游行庆祝维多利亚日。这一天是英国维多利亚女王的生日。对于许多人来说，维多利亚长日的周末标志着冬季的结束和春夏季节的非正式开始。在这个周末之后，园丁们大致可以判断秋天到来之前会不会有很多的霜冻，这样他们才能决定是否种植对环境要求比较高的作物和植物。</p>
+<h5 id="02-07-2018-Canada-Day-加拿大国庆日"><a href="#02-07-2018-Canada-Day-加拿大国庆日" class="headerlink" title="02-07-2018 Canada Day 加拿大国庆日"></a>02-07-2018 Canada Day 加拿大国庆日</h5><p>1867年7月1日，加拿大成为英国和四个省的联邦自治政府：新斯科舍省， 新不伦瑞克，安大略和魁北克。这个日子的纪念日被称为统治日，直到1982年。自1983年以来，7月1日正式被称为加拿大日。在许多城镇，市政府组织一系列户外活动。这些包括煎饼早餐，游行，音乐会，嘉年华会，烟花汇演和新加拿大公民的公民仪式。庆祝活动常常有着很浓厚的爱国情结。加拿大的国旗被广泛地展示，许多人把他们的脸涂成红白相间的样子，展示着加拿大的民族色彩。由于2018年7月1日是周日，所以政府将今年的7月2日作为国庆日的法定假日。</p>
+<h5 id="06-08-2018-Civic-Holiday-市民假期日"><a href="#06-08-2018-Civic-Holiday-市民假期日" class="headerlink" title="06-08-2018 Civic Holiday 市民假期日"></a>06-08-2018 Civic Holiday 市民假期日</h5><p>这一天是市民假期，会举办各种活动庆祝当地的文化，历史和成就。许多庆祝活动都是由社区成员组织的，其中包括：为自己的省制作生日蛋糕; 举办体育赛事和提供公共餐点，如早餐，烧烤，午餐和晚餐。更大的活动包括专业的焰火表演，公路赛和文化节。</p>
+<h5 id="03-09-2018-Labour-Day-劳动节"><a href="#03-09-2018-Labour-Day-劳动节" class="headerlink" title="03-09-2018 Labour Day 劳动节"></a>03-09-2018 Labour Day 劳动节</h5><p>加拿大劳动节在9月的第一个星期一举行。它最初只是为了给工人提供更好的工作条件或更高薪资，现在这一天是许多加拿大人长周末的一部分。传统上，劳动节是在工会组织的游行和野餐期间竞选和庆祝工人权利的场合。这些仍然在一些加拿大人的劳动节中发挥作用，但很多人认为9月份的第一个星期一是夏季旅行的一个机会，也许是去乡下别墅，或者举办野餐，展会和烟花汇演。对于青少年和其他学生来说，劳动节周末是最后一次举行庆祝派对或在新学年重新开学之前去旅行的机会。</p>
+<h5 id="08-10-2018-Thanksgiving-Day-感恩节"><a href="#08-10-2018-Thanksgiving-Day-感恩节" class="headerlink" title="08-10-2018 Thanksgiving Day 感恩节"></a>08-10-2018 Thanksgiving Day 感恩节</h5><p>终于到感恩节啦！加拿大感恩节自1957年以来一直在十月的第二个星期一放假。这是一个人们对过去一年里实现丰收和获得其他财富而感恩的机会。人们通常在感恩节周末拜访远方居住的家人或朋友，或者在自己的家中接待他们。许多人还会在这个节日准备一顿特别的饭菜。传统上，这包括烤火鸡和季节性产品，如南瓜，玉米穗和山核桃等。</p>
+<h5 id="12-10-2018-Ends-of-Fall-Reading-Week"><a href="#12-10-2018-Ends-of-Fall-Reading-Week" class="headerlink" title="12-10-2018 Ends of Fall Reading Week"></a>12-10-2018 Ends of Fall Reading Week</h5><p>秋季学期的Study Week在这一天结束。学校会在这之后的周一进行正常的教学安排。</p>
+<h5 id="25-12-2018-Christmas-Day-圣诞节"><a href="#25-12-2018-Christmas-Day-圣诞节" class="headerlink" title="25-12-2018 Christmas Day 圣诞节"></a>25-12-2018 Christmas Day 圣诞节</h5><p>相信大家对这个节日并不陌生。圣诞节，是耶稣诞生的日子。许多人和亲朋好友度过这一天。习惯上会交换礼物，享受特别的节日餐，或者参加特别的礼拜仪式。饮食的种类可以有很多种。一天可以从熟食早餐开始，如火腿，鸡蛋或煎饼。午餐通常是非常丰盛的，其中火鸡是必备餐点。餐后的甜点，传统上吃梅子或圣诞布丁。很多家庭的晚餐会准备以火腿为基础的料理。白天有多种甜味和咸味小吃，包括糖果，橘子，坚果和黄油蛋挞或脆饼。</p>
+<h5 id="26-12-2018-Boxing-Day-节礼日"><a href="#26-12-2018-Boxing-Day-节礼日" class="headerlink" title="26-12-2018 Boxing Day 节礼日"></a>26-12-2018 Boxing Day 节礼日</h5><p>Boxing Day可以说是女孩儿们的狂欢日了。在这一天，很多商店会进行力度很大的打折促销活动。购物商场人满为患，甚至有很多人起早去商店排队抢购。这不禁让小编想起了在国内被双11支配的恐惧感啊。</p>
+<h5 id="01-01-2019-New-Years-Day-元旦"><a href="#01-01-2019-New-Years-Day-元旦" class="headerlink" title="01-01-2019 New Years Day 元旦"></a>01-01-2019 New Years Day 元旦</h5><p>元旦是迎接新的一年的日子。很多人会选择和家人或朋友一起度过这有意义的一天。</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Win7x32x64安装OleDB驱动解决上传excel报错office未注册问题]]></title>
       <url>/2018/03/31/2018-3-31%20Win7x32x64%E5%AE%89%E8%A3%85OleDB%E9%A9%B1%E5%8A%A8%E8%A7%A3%E5%86%B3%E4%B8%8A%E4%BC%A0excel%E6%8A%A5%E9%94%99office%E6%9C%AA%E6%B3%A8%E5%86%8C%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>Office 2007、2010的Ace引擎都是Microsoft.ACE.OLEDB.12.0，C/S程序上传excel功能，有时候会报错office未注册的提示。</p>
@@ -304,29 +407,6 @@
             <tag> software </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2018加拿大安大略省法定公众假期]]></title>
-      <url>/2018/03/31/2018-3-31%202018%E5%8A%A0%E6%8B%BF%E5%A4%A7%E5%AE%89%E5%A4%A7%E7%95%A5%E7%9C%81%E6%B3%95%E5%AE%9A%E5%85%AC%E4%BC%97%E5%81%87%E6%9C%9F/</url>
-      <content type="html"><![CDATA[<p>2018 Canada Ontario Statutory Holidays<br>2018 加拿大安大略省法定公众假期</p>
-<h5 id="19-02-2018-Family-Day-家庭日"><a href="#19-02-2018-Family-Day-家庭日" class="headerlink" title="19-02-2018 Family Day 家庭日"></a>19-02-2018 Family Day 家庭日</h5><p>Family Day又称“家庭日”，除了让人们得到充分的休息之外，也是父母带孩子一起去游玩娱乐的好节日。</p>
-<h5 id="23-02-2018-Ends-of-Winter-Reading-Week"><a href="#23-02-2018-Ends-of-Winter-Reading-Week" class="headerlink" title="23-02-2018 Ends of Winter Reading Week"></a>23-02-2018 Ends of Winter Reading Week</h5><p>Study Week 对于学生来说是很特别的一段时间，通常会发生在学期中间。在Study Week期间，学校会停课，将这一周的时间留给学生自由安排学习日程。通常期中考试的时间会安排在Study Week附近，所以这一周你会看到人满为患的图书馆，安静的宿舍楼。当然，也有机会看到朋友圈或Facebook上学霸们发的旅游照片。</p>
-<a id="more"></a>
-<h5 id="30-03-2018-Good-Friday-圣周五–耶稣受难日"><a href="#30-03-2018-Good-Friday-圣周五–耶稣受难日" class="headerlink" title="30-03-2018 Good Friday 圣周五–耶稣受难日"></a>30-03-2018 Good Friday 圣周五–耶稣受难日</h5><p>这一天是耶稣的受难日。基督徒可以参加特别的教会服务，即使他们在今年的其他时间里没有经常去教堂。耶稣受难日是许多基督徒哀悼祈祷的日子。蜡烛往往被扑灭，雕像、绘画和十字架被披上黑色，紫色或灰色的布。对于不是基督徒的加拿大人来说，这是一个受欢迎的春假，有些人会用来拜访家人或朋友。</p>
-<h5 id="02-04-2018-Easter-Monday-复活节星期一"><a href="#02-04-2018-Easter-Monday-复活节星期一" class="headerlink" title="02-04-2018 Easter Monday 复活节星期一"></a>02-04-2018 Easter Monday 复活节星期一</h5><p>根据基督教圣经，复活节星期一是复活节后的第二天，纪念耶稣基督的复活。复活节星期一也是许多加拿大人的节日。一些加拿大人在复活节星期一休假，有些则是为期四天的周末。那些短暂休假或者去拜访过家人或朋友的人经常在周一复活节回家。对于其他人来说，这是一个吃复活节彩蛋的机会。人们可以根据天气情况，在户外享受美好时间。复活节星期一休息时，学校、企业和组织关闭。公共交通服务可能会缩短时间。</p>
-<h5 id="21-05-2018-Victoria-Day-维多利亚日"><a href="#21-05-2018-Victoria-Day-维多利亚日" class="headerlink" title="21-05-2018 Victoria Day 维多利亚日"></a>21-05-2018 Victoria Day 维多利亚日</h5><p>一些城市会举行烟花汇演或游行庆祝维多利亚日。这一天是英国维多利亚女王的生日。对于许多人来说，维多利亚长日的周末标志着冬季的结束和春夏季节的非正式开始。在这个周末之后，园丁们大致可以判断秋天到来之前会不会有很多的霜冻，这样他们才能决定是否种植对环境要求比较高的作物和植物。</p>
-<h5 id="02-07-2018-Canada-Day-加拿大国庆日"><a href="#02-07-2018-Canada-Day-加拿大国庆日" class="headerlink" title="02-07-2018 Canada Day 加拿大国庆日"></a>02-07-2018 Canada Day 加拿大国庆日</h5><p>1867年7月1日，加拿大成为英国和四个省的联邦自治政府：新斯科舍省， 新不伦瑞克，安大略和魁北克。这个日子的纪念日被称为统治日，直到1982年。自1983年以来，7月1日正式被称为加拿大日。在许多城镇，市政府组织一系列户外活动。这些包括煎饼早餐，游行，音乐会，嘉年华会，烟花汇演和新加拿大公民的公民仪式。庆祝活动常常有着很浓厚的爱国情结。加拿大的国旗被广泛地展示，许多人把他们的脸涂成红白相间的样子，展示着加拿大的民族色彩。由于2018年7月1日是周日，所以政府将今年的7月2日作为国庆日的法定假日。</p>
-<h5 id="06-08-2018-Civic-Holiday-市民假期日"><a href="#06-08-2018-Civic-Holiday-市民假期日" class="headerlink" title="06-08-2018 Civic Holiday 市民假期日"></a>06-08-2018 Civic Holiday 市民假期日</h5><p>这一天是市民假期，会举办各种活动庆祝当地的文化，历史和成就。许多庆祝活动都是由社区成员组织的，其中包括：为自己的省制作生日蛋糕; 举办体育赛事和提供公共餐点，如早餐，烧烤，午餐和晚餐。更大的活动包括专业的焰火表演，公路赛和文化节。</p>
-<h5 id="03-09-2018-Labour-Day-劳动节"><a href="#03-09-2018-Labour-Day-劳动节" class="headerlink" title="03-09-2018 Labour Day 劳动节"></a>03-09-2018 Labour Day 劳动节</h5><p>加拿大劳动节在9月的第一个星期一举行。它最初只是为了给工人提供更好的工作条件或更高薪资，现在这一天是许多加拿大人长周末的一部分。传统上，劳动节是在工会组织的游行和野餐期间竞选和庆祝工人权利的场合。这些仍然在一些加拿大人的劳动节中发挥作用，但很多人认为9月份的第一个星期一是夏季旅行的一个机会，也许是去乡下别墅，或者举办野餐，展会和烟花汇演。对于青少年和其他学生来说，劳动节周末是最后一次举行庆祝派对或在新学年重新开学之前去旅行的机会。</p>
-<h5 id="08-10-2018-Thanksgiving-Day-感恩节"><a href="#08-10-2018-Thanksgiving-Day-感恩节" class="headerlink" title="08-10-2018 Thanksgiving Day 感恩节"></a>08-10-2018 Thanksgiving Day 感恩节</h5><p>终于到感恩节啦！加拿大感恩节自1957年以来一直在十月的第二个星期一放假。这是一个人们对过去一年里实现丰收和获得其他财富而感恩的机会。人们通常在感恩节周末拜访远方居住的家人或朋友，或者在自己的家中接待他们。许多人还会在这个节日准备一顿特别的饭菜。传统上，这包括烤火鸡和季节性产品，如南瓜，玉米穗和山核桃等。</p>
-<h5 id="12-10-2018-Ends-of-Fall-Reading-Week"><a href="#12-10-2018-Ends-of-Fall-Reading-Week" class="headerlink" title="12-10-2018 Ends of Fall Reading Week"></a>12-10-2018 Ends of Fall Reading Week</h5><p>秋季学期的Study Week在这一天结束。学校会在这之后的周一进行正常的教学安排。</p>
-<h5 id="25-12-2018-Christmas-Day-圣诞节"><a href="#25-12-2018-Christmas-Day-圣诞节" class="headerlink" title="25-12-2018 Christmas Day 圣诞节"></a>25-12-2018 Christmas Day 圣诞节</h5><p>相信大家对这个节日并不陌生。圣诞节，是耶稣诞生的日子。许多人和亲朋好友度过这一天。习惯上会交换礼物，享受特别的节日餐，或者参加特别的礼拜仪式。饮食的种类可以有很多种。一天可以从熟食早餐开始，如火腿，鸡蛋或煎饼。午餐通常是非常丰盛的，其中火鸡是必备餐点。餐后的甜点，传统上吃梅子或圣诞布丁。很多家庭的晚餐会准备以火腿为基础的料理。白天有多种甜味和咸味小吃，包括糖果，橘子，坚果和黄油蛋挞或脆饼。</p>
-<h5 id="26-12-2018-Boxing-Day-节礼日"><a href="#26-12-2018-Boxing-Day-节礼日" class="headerlink" title="26-12-2018 Boxing Day 节礼日"></a>26-12-2018 Boxing Day 节礼日</h5><p>Boxing Day可以说是女孩儿们的狂欢日了。在这一天，很多商店会进行力度很大的打折促销活动。购物商场人满为患，甚至有很多人起早去商店排队抢购。这不禁让小编想起了在国内被双11支配的恐惧感啊。</p>
-<h5 id="01-01-2019-New-Years-Day-元旦"><a href="#01-01-2019-New-Years-Day-元旦" class="headerlink" title="01-01-2019 New Years Day 元旦"></a>01-01-2019 New Years Day 元旦</h5><p>元旦是迎接新的一年的日子。很多人会选择和家人或朋友一起度过这有意义的一天。</p>
-]]></content>
-      
         
     </entry>
     
@@ -1544,14 +1624,16 @@
       
         <categories>
             
-            <category> Excel </category>
+            <category> Office </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Excel </tag>
+            <tag> excel </tag>
+            
+            <tag> office </tag>
             
         </tags>
         
